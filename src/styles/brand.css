@@ -65,7 +65,7 @@ h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
 }
 .workflow-previews a:hover { color: var(--nb-primary); }
 .workflow-previews a:focus-visible { outline: 2px solid var(--nb-ring); outline-offset: 4px; }
-.workflow-previews img, .docs-content img[src$="/workspace-setup.webp"] {
+.docs-content img[src$="/workspace-setup.webp"] {
   display: block;
   width: 100%;
   height: auto;
@@ -82,4 +82,9 @@ h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
   height: auto;
   aspect-ratio: 222 / 82;
   image-rendering: pixelated;
+}
+
+.docs-content .workflow-previews img {
+  aspect-ratio: 206 / 112;
+  margin-bottom: .55rem;
 }
