@@ -76,7 +76,7 @@ h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
   border-radius: .4rem;
 }
 
-.docs-content img[src="/images/docs/search-context.png"] {
+.docs-content img:is([src="/images/docs/search-context.png"], [src^="/images/docs/pixel/"]) {
   display: block;
   width: min(100%, 41.625rem);
   height: auto;
