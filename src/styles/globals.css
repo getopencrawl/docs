@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-mode="dark"], [data-mode="dark"] *));
-
 /* ============================================================
  * Nimbus Theme — THE file you edit to customize your site.
  *
@@ -9,7 +7,7 @@
  *   1. CSS custom properties (--nb-*) define the design tokens
  *   2. `@theme` block exposes them to Tailwind so utilities like
  *      `bg-card`, `text-foreground`, `border-border` work
- *   3. Dark mode uses the `[data-mode="dark"]` attribute
+ *   3. Dark mode follows the system color scheme
  *   4. All colors use oklch for perceptual uniformity
  *
  * Naming convention:
@@ -154,59 +152,61 @@
 }
 
 /* ---- Dark mode ---- */
-[data-mode="dark"] {
-	color-scheme: dark;
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
 
-	--nb-background: oklch(0.085 0 0);
-	--nb-foreground: oklch(0.97 0 0);
+		--nb-background: oklch(0.085 0 0);
+		--nb-foreground: oklch(0.97 0 0);
 
-	--nb-card: #0F0F0F;
-	--nb-card-foreground: var(--nb-foreground);
+		--nb-card: #0F0F0F;
+		--nb-card-foreground: var(--nb-foreground);
 
-	--nb-muted: #060606;
-	--nb-muted-foreground: oklch(0.708 0 0);
+		--nb-muted: #060606;
+		--nb-muted-foreground: oklch(0.708 0 0);
 
-	--nb-accent: oklch(0.269 0 0);
-	--nb-accent-foreground: var(--nb-foreground);
+		--nb-accent: oklch(0.269 0 0);
+		--nb-accent-foreground: var(--nb-foreground);
 
-	--nb-primary: oklch(0.9 0 0);
-	--nb-primary-foreground: oklch(0.085 0 0);
-	--nb-primary-hover: oklch(0.7 0 0);
+		--nb-primary: oklch(0.9 0 0);
+		--nb-primary-foreground: oklch(0.085 0 0);
+		--nb-primary-hover: oklch(0.7 0 0);
 
-	--nb-brand: oklch(0.837 0.018 261.3);
-	--nb-brand-wash: color-mix(in oklch, var(--nb-brand) 10%, transparent);
+		--nb-brand: oklch(0.837 0.018 261.3);
+		--nb-brand-wash: color-mix(in oklch, var(--nb-brand) 10%, transparent);
 
-	--nb-border: oklch(0.269 0 0);
-	--nb-border-strong: oklch(0.371 0 0);
-	--nb-selected: oklch(0.371 0 0);
-	--nb-code-tint: color-mix(in oklch, var(--nb-foreground) 6%, transparent);
-	--nb-ring: oklch(0.837 0.018 261.3 / 0.45);
+		--nb-border: oklch(0.269 0 0);
+		--nb-border-strong: oklch(0.371 0 0);
+		--nb-selected: oklch(0.371 0 0);
+		--nb-code-tint: color-mix(in oklch, var(--nb-foreground) 6%, transparent);
+		--nb-ring: oklch(0.837 0.018 261.3 / 0.45);
 
-	--nb-info: oklch(0.707 0.165 254.624);
-	--nb-info-foreground: oklch(0.707 0.165 254.624);
-	--nb-info-muted: oklch(0.38 0.145 265.5 / 0.22);
+		--nb-info: oklch(0.707 0.165 254.624);
+		--nb-info-foreground: oklch(0.707 0.165 254.624);
+		--nb-info-muted: oklch(0.38 0.145 265.5 / 0.22);
 
-	--nb-success: oklch(0.905 0.093 164.15);
-	--nb-success-foreground: oklch(0.905 0.093 164.15);
-	--nb-success-muted: oklch(0.393 0.096 152.3 / 0.2);
+		--nb-success: oklch(0.905 0.093 164.15);
+		--nb-success-foreground: oklch(0.905 0.093 164.15);
+		--nb-success-muted: oklch(0.393 0.096 152.3 / 0.2);
 
-	--nb-warning: oklch(0.75 0.183 55.934);
-	--nb-warning-foreground: oklch(0.75 0.183 55.934);
-	--nb-warning-muted: oklch(0.353 0.079 65 / 0.37);
+		--nb-warning: oklch(0.75 0.183 55.934);
+		--nb-warning-foreground: oklch(0.75 0.183 55.934);
+		--nb-warning-muted: oklch(0.353 0.079 65 / 0.37);
 
-	--nb-danger: oklch(0.704 0.191 22.216);
-	--nb-danger-foreground: oklch(0.704 0.191 22.216);
-	--nb-danger-muted: oklch(0.429 0.176 28.7 / 0.17);
+		--nb-danger: oklch(0.704 0.191 22.216);
+		--nb-danger-foreground: oklch(0.704 0.191 22.216);
+		--nb-danger-muted: oklch(0.429 0.176 28.7 / 0.17);
 
-	/* API method palette — dark lines; text and tint follow the status tokens. */
-	--nb-m-get-line: oklch(0.765 0.177 163.223 / 0.25);
-	--nb-m-put: var(--nb-warning);
-	--nb-m-put-line: oklch(0.645 0.168 50 / 0.25);
-	--nb-m-delete-line: oklch(0.577 0.245 27.325 / 0.25);
+		/* API method palette — dark lines; text and tint follow the status tokens. */
+		--nb-m-get-line: oklch(0.765 0.177 163.223 / 0.25);
+		--nb-m-put: var(--nb-warning);
+		--nb-m-put-line: oklch(0.645 0.168 50 / 0.25);
+		--nb-m-delete-line: oklch(0.577 0.245 27.325 / 0.25);
 
-	--nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
-	--nb-shadow: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
-	--nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.2);
+		--nb-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
+		--nb-shadow: 0 1px 3px oklch(0 0 0 / 0.3), 0 1px 2px oklch(0 0 0 / 0.2);
+		--nb-shadow-lg: 0 4px 12px oklch(0 0 0 / 0.4), 0 2px 4px oklch(0 0 0 / 0.2);
+	}
 }
 
 /* ---- Tailwind theme mapping ----
@@ -365,8 +365,10 @@ pre.astro-code > code {
 pre.astro-code span {
 	color: var(--shiki-light, inherit);
 }
-[data-mode="dark"] pre.astro-code span {
-	color: var(--shiki-dark, inherit);
+@media (prefers-color-scheme: dark) {
+	pre.astro-code span {
+		color: var(--shiki-dark, inherit);
+	}
 }
 
 /* Copy button injected by initCodeCopy. */
