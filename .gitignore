@@ -5,3 +5,7 @@ dist/
 .DS_Store
 .env
 .env.*
+.nimbus/
+.dev.vars
+.dev.vars.*
+npm-debug.log*

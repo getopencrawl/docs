@@ -3,31 +3,30 @@
 @font-face { font-family: Switzer; src: url('https://getopencrawl.com/assets/onepatch/switzer-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: Switzer; src: url('https://getopencrawl.com/assets/onepatch/switzer-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
 @font-face { font-family: Geist; src: url('https://getopencrawl.com/assets/fonts/geist-sans.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
-:root, :root[data-theme='light'], :root[data-theme='dark'] {
-  color-scheme: light;
-  --sl-font: Switzer, system-ui, sans-serif;
-  --sl-color-accent-low: #e5e5ff;
-  --sl-color-accent: #5459dc;
-  --sl-color-accent-high: #383bb0;
-  --sl-color-white: #1b1b22;
-  --sl-color-gray-1: #3d3d4a;
-  --sl-color-gray-2: #565663;
-  --sl-color-gray-3: #6f6f80;
-  --sl-color-gray-4: #a5a4b8;
-  --sl-color-gray-5: #d8d7e6;
-  --sl-color-gray-6: #f4f3f9;
-  --sl-color-black: #fbfbfe;
-  --sl-color-bg: #fbfbfe;
-  --sl-color-bg-nav: #f4f3f9;
-  --sl-color-bg-sidebar: #f4f3f9;
-  --sl-color-hairline-light: #d8d7e6;
-  --sl-color-hairline: #d8d7e6;
-  --sl-sidebar-width: 17rem;
-  --sl-content-width: 48rem;
+
+:root {
+  --nb-font-sans: Switzer, system-ui, sans-serif;
+  --nb-background: #fbfbfe;
+  --nb-foreground: #1b1b22;
+  --nb-card: #f4f3f9;
+  --nb-muted: #f4f3f9;
+  --nb-muted-foreground: #565663;
+  --nb-accent: #e5e5ff;
+  --nb-primary: #5459dc;
+  --nb-primary-hover: #383bb0;
+  --nb-brand: #5459dc;
+  --nb-brand-wash: #e5e5ff;
+  --nb-border: #d8d7e6;
+  --nb-border-strong: #a5a4b8;
+  --nb-ring: #7d82ff;
+  --nb-sidebar-width: 17rem;
+  --nb-content-max: 48rem;
+  --nb-h1-size: clamp(2rem, 4vw, 2.75rem);
+  --nb-h1-weight: 500;
+  --nb-h1-tracking: -0.035em;
 }
-h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; font-weight: 500; letter-spacing: -0.035em; }
-h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
-.site-title { color: #1b1b22; }
-.sidebar a[aria-current='page'] { color: #383bb0; background: #e5e5ff; font-weight: 500; }
-.content-panel + .content-panel { border-top: 0; padding-top: 0; }
-.sl-markdown-content { color: #565663; }
+h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
+.docs-content { color: #565663; }
+.opencrawl-wordmark { display: inline-flex; align-items: center; gap: 0.45rem; color: #1b1b22; white-space: nowrap; }
+.opencrawl-wordmark span { font-family: Geist, system-ui, sans-serif; font-size: 1.4rem; font-weight: 650; letter-spacing: -0.05em; }
+.opencrawl-wordmark img { flex: none; }
