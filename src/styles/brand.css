@@ -75,3 +75,11 @@ h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
   border: 1px solid var(--nb-border);
   border-radius: .4rem;
 }
+
+.docs-content img[src="/images/docs/search-context.png"] {
+  display: block;
+  width: min(100%, 41.625rem);
+  height: auto;
+  aspect-ratio: 222 / 82;
+  image-rendering: pixelated;
+}
