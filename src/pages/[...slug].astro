@@ -8,7 +8,6 @@ import {
   getPrevNext,
   getBreadcrumbs,
   getEditUrl,
-  getLastUpdated,
   getTOC,
   stripBase,
 } from "@cloudflare/nimbus-docs/runtime";
@@ -35,9 +34,8 @@ const prevNext = await getPrevNext(currentSlug, {
 // breadcrumb hrefs — parity with the getSidebar call above.
 const breadcrumbs = await getBreadcrumbs(currentSlug, { collection: entry.collection });
 const editUrl = await getEditUrl(entry);
-// Frontmatter wins; git is the fallback.
-const lastUpdated = entry.data.lastUpdated ??
-  await getLastUpdated(entry);
+// Show an updated date only when the page author explicitly supplies one.
+const lastUpdated = entry.data.lastUpdated;
 // `tocOn` already implies `tableOfContents !== false`, but TS can't carry
 // that boolean narrowing to the value here — re-check it so `getTOC` only
 // ever sees its options object (or undefined), never `false`.
