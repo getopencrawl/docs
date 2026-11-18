@@ -1,0 +1,28 @@
+---
+title: Back up and restore Compose
+description: Recover a single-host workspace at the same OpenCrawl revision.
+sidebar:
+  order: 5
+---
+
+## Back up
+
+Pause this installation’s Airbyte connections and wait for running syncs to finish. Run the backup from the repository root.
+
+```sh
+node deploy/backup.mjs create /absolute/new-backup-directory
+```
+
+The script stops the stack, saves its volumes and `deploy/.env`, records the revision and checksums, then restarts it. Protect the backup directory. It contains the encryption key. Back up any external services separately.
+
+## Restore
+
+Check out the recorded Git revision and use empty destination volumes. Keep Airbyte connections paused during recovery.
+
+```sh
+node deploy/backup.mjs restore /absolute/backup-directory
+cd deploy
+docker compose up -d --wait
+```
+
+Sign in and check a retained session, board history and a connected source. Resume Airbyte syncs only on the copy that will stay in service.
