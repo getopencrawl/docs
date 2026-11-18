@@ -1,8 +1,30 @@
 ---
 title: Docker Compose
-description: Run a workspace on a single Docker host.
+description: Start a workspace on one Docker host with local accounts.
+sidebar:
+  order: 2
 ---
 
-Start with the [single-host installation guide](https://github.com/getopencrawl/opencrawl-core/blob/main/docs/self-host.md). The first run of `./deploy/up.sh` creates the local configuration. Set your workspace URL and run the script again to start the services.
+## Prepare the host
 
-Use the guide’s `--no-airbyte` option for a workspace that only needs agent capture, search and the board.
+Install Docker Engine and its Compose plugin. Point an HTTPS reverse proxy at `127.0.0.1:8092`. Start with an empty installation and check out the OpenCrawl revision you intend to run.
+
+```sh
+git clone https://github.com/getopencrawl/opencrawl-core.git
+cd opencrawl-core
+```
+
+## Start the workspace
+
+1. Run `./deploy/up.sh --no-airbyte`. The first run generates secrets in `deploy/.env` and exits.
+2. Set `OPENCRAWL_URL` in that file to your public HTTPS origin. Give each installation its own `COMPOSE_PROJECT_NAME`.
+3. Run `./deploy/up.sh --no-airbyte` again. Open the private setup link it prints to create your first administrator.
+4. From **Settings → Team**, share a single-use invitation link with a teammate. In `opencrawl setup`, choose **Self-hosted** and enter the workspace URL.
+
+This starts capture, memories, search and the agent board.
+
+## Storage and external sources
+
+- **Search index.** OpenSearch is the default. For SQLite FTS5 on a fresh host, use `./deploy/up.sh --sqlite --no-airbyte` on the first run. The installer saves that choice.
+- **Connectors.** To sync tools such as Slack or GitHub, [configure Airbyte](/self-hosting/external-sources/).
+- **Recovery.** Use a [Compose backup](/self-hosting/backups/) to restore the same revision.

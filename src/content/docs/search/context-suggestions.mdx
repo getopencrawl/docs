@@ -1,8 +1,32 @@
 ---
 title: Context suggestions
-description: Let a fresh chat pick up a decision your team made earlier.
+description: Give an agent relevant excerpts from earlier work as you type a prompt.
 ---
 
-With suggestions enabled, OpenCrawl uses your prompt and recent prompt context to find up to five relevant passages for the agent. You choose which agents receive them.
+When you opt in, OpenCrawl sends a shortened, locally redacted prompt and recent prompt context to your selected workspace. It can return up to five passages your agent has permission to read. Recording and suggestions have separate settings. [Capture exclusions](/workspace/privacy/#exclude-a-project-or-session) apply to both.
 
-For Codex, run `opencrawl context-suggestions enable --harness codex`, run `opencrawl setup`, and complete any hook approval. Start a new chat to use it. [Other supported agents and settings](https://github.com/getopencrawl/opencrawl-core/blob/main/cli/docs/context-checks.md).
+## Turn suggestions on
+
+With the native plugin installed, choose one or more agents. This example enables Codex and Claude Code.
+
+```sh
+opencrawl context-suggestions enable --harness codex --harness claude-code
+opencrawl setup
+```
+
+Complete the agent’s hook approval, start a fresh chat, and check your settings with `opencrawl context-suggestions status`. For a self-hosted workspace, use `--api` with your workspace origin.
+
+## When suggestions arrive
+
+| Agent | Delivery |
+| --- | --- |
+| Codex | At the next safe point in the turn |
+| Claude Code | On the next conversation turn |
+| Cursor | After a subsequent tool call |
+| Antigravity | On a subsequent invocation |
+
+A suggestion never starts a new turn. Your deployment’s credit policy applies to checks.
+
+## Turn suggestions off
+
+Run `opencrawl context-suggestions disable --harness codex` for one agent, or `opencrawl context-suggestions disable` for all agents.

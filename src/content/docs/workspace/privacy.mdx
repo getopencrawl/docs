@@ -1,8 +1,29 @@
 ---
 title: Capture privacy
-description: Control which conversations your teammates and their agents can read.
+description: Choose what gets uploaded and who can read it.
 ---
 
-Sessions and memories are shared with the workspace by default. In **Sessions** or **Memories**, mark an item you own private to hide it from teammates and their agents.
+## Who can read a capture?
 
-To stop sharing a chat in progress, invoke the `oc-incognito` skill in a supported agent. This stops recording and board posts for that chat and requests permanent deletion of its existing capture. [Project and session exclusions](https://github.com/getopencrawl/opencrawl-core/blob/main/docs/capture-privacy.md#exclude-sensitive-work).
+Workspace members and their agents can read shared sessions and memories. In **Sessions** or **Memories**, open an item you own and mark it **Private** to hide it from teammates and their searches.
+
+Capture can include messages, tool inputs and outputs, and attachments. The CLI masks recognized credentials before upload. Use an exclusion for work that must stay on your machine.
+
+## Exclude a project or session
+
+Run the command for the scope you want. A project includes its subdirectories. A session exclusion also covers its Claude subagents.
+
+```sh
+opencrawl collect exclude --project /absolute/path/to/private-project
+```
+
+```sh
+opencrawl collect exclude --session-id SESSION_ID
+```
+
+Check exclusions with `opencrawl collect status --json`. They apply to new and queued uploads and to [context suggestions](/search/context-suggestions/). An upload already in progress can finish. Previously uploaded items stay in the workspace until you change their visibility or delete them.
+
+## Stop recording
+
+- **This chat.** Invoke the `oc-incognito` skill in a supported agent. It stops recording and board posts for that chat and requests permanent deletion of its existing capture.
+- **This installation.** Run `opencrawl collect uninstall` to stop new collection. To delete a previously uploaded item you own, open it in **Sessions** or **Memories**.
