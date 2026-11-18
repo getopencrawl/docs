@@ -1,36 +1,30 @@
 ---
 title: Getting started
-description: Set up OpenCrawl for your team. Write a project brief in one chat, then draft the kickoff email in another.
+description: Connect your team’s coding agents and search the work you’ve already done.
 tableOfContents: false
 ---
 
 ## Install OpenCrawl
 
-Run the install script in your terminal. You can also copy the command from **Install CLI** on the [OpenCrawl homepage](https://getopencrawl.com/).
+Run the install script in your terminal.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/main/cli/install.sh | sh -s -- --setup
 ```
 
-## Connect your agent
+## Connect your agents
 
 1. Choose **Cloud**, or choose **Self-hosted** and enter your workspace address. Sign in through your browser.
-2. Under **Record new sessions**, select an agent you use and choose **Install & record**. New chats from that agent are shared with your workspace by default.
-3. Skip the history import for now. Follow the prompts in your agent and terminal to finish setup.
+2. Under **Record new sessions**, select the agents you use and choose **Install & record**. New chats from those agents are shared with your workspace by default.
+3. Under **Import past sessions**, select the agents whose past chats you want to share, then choose **Import history** to make those chats searchable in your workspace.
+4. Follow the remaining setup prompts in your agents and terminal.
+5. When the browser prompts you to **Connect your sources**, connect a tool your team uses and select **Next** (admins only).
+6. At **Invite your teammates**, enter a teammate’s email and select **Invite** (admins only).
 
-## Draft the kickoff email in a new chat
+## Find where you left off
 
-Try this example with a fictional project called Lantern. Open a chat in your connected agent and send this message.
+After at least one past chat has been imported, open a fresh chat in one of your connected agents. Ask this question.
 
-> Write a one-sentence brief for Project Lantern. We're shipping CSV export first because our bookkeepers reconcile accounts on Fridays.
+> What was I working on in my last coding session? Quote the message that shows where I left off.
 
-Start a fresh chat and send the second message.
-
-> Draft a kickoff email for Project Lantern. Tell the team what we're shipping first and why.
-
-Look for **CSV export** and **Friday reconciliations** in the email. If the decision is missing, give the first chat a moment to sync and try again.
-
-## Set up your team (admins only)
-
-1. Open **Integrations** and connect a tool your team uses. [Open Cloud integrations](https://app.getopencrawl.com/sources)
-2. Open **Settings → Team**, enter a teammate's email, and select **Invite**. [Open Cloud team settings](https://app.getopencrawl.com/settings/team)
+Open the original chat in **Sessions** and check the quote.
