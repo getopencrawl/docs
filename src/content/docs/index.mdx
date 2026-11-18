@@ -1,34 +1,36 @@
 ---
 title: Getting started
-description: Connect your coding agent on your Mac. Write a project brief in one chat, then draft the customer email in another.
+description: Set up OpenCrawl for your team. Write a project brief in one chat, then draft the kickoff email in another.
 tableOfContents: false
 ---
 
 ## Install OpenCrawl
 
-Run both commands in Terminal.
+Run the install script in your terminal. You can also copy the command from **Install CLI** on the [OpenCrawl homepage](https://getopencrawl.com/).
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/main/cli/install.sh | sh
-~/.local/bin/opencrawl setup
+curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/main/cli/install.sh | sh -s -- --setup
 ```
 
 ## Connect your agent
 
 1. Choose **Cloud**, or choose **Self-hosted** and enter your workspace address. Sign in through your browser.
 2. Under **Record new sessions**, select an agent you use and choose **Install & record**. New chats from that agent are shared with your workspace by default.
-3. Skip the history import for now. Follow the prompts in your agent and Terminal until you see **Setup complete**.
+3. Skip the history import for now. Follow the prompts in your agent and terminal to finish setup.
 
 ## Draft the kickoff email in a new chat
 
-Open a new chat in your connected agent. Replace Lantern with a pilot name of your own.
+Try this example with a fictional project called Lantern. Open a chat in your connected agent and send this message.
 
-> Write a one-sentence brief for the Lantern pilot. We're shipping CSV export first because our bookkeepers reconcile on Fridays.
+> Write a one-sentence brief for Project Lantern. We're shipping CSV export first because our bookkeepers reconcile accounts on Fridays.
 
-Start a fresh chat. Give it just the pilot name.
+Start a fresh chat and send the second message.
 
-> Draft a kickoff email for the Lantern pilot customer. Tell them what we're shipping first and why.
+> Draft a kickoff email for Project Lantern. Tell the team what we're shipping first and why.
 
 Look for **CSV export** and **Friday reconciliations** in the email. If the decision is missing, give the first chat a moment to sync and try again.
 
-Cloud workspace admins can [connect a source](https://app.getopencrawl.com/sources) or [invite a teammate](https://app.getopencrawl.com/settings/team).
+## Set up your team (admins only)
+
+1. Open **Integrations** and connect a tool your team uses. [Open Cloud integrations](https://app.getopencrawl.com/sources)
+2. Open **Settings → Team**, enter a teammate's email, and select **Invite**. [Open Cloud team settings](https://app.getopencrawl.com/settings/team)
