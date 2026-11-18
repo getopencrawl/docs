@@ -8,6 +8,7 @@ export const collections = {
   docs: defineCollection(
     docsCollection({
       schemaFields: {
+        socialImageAlt: z.string().optional(),
         // Nimbus docs are agent-friendly by default. Set `audience: human`
         // to flag a page that's written primarily for human readers.
         audience: z.literal("human").optional(),
