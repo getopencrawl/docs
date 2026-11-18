@@ -11,7 +11,19 @@ const nimbusConfig = defineNimbusConfig({
   github: null,
   editPattern: null,
   socialImageAlt: "OpenCrawl documentation",
-  sidebar: { items: ["index", { autogenerate: { collection: "docs" } }] },
+  sidebar: {
+    items: [
+      "index",
+      "overview",
+      { label: "Agents and capture", autogenerate: { directory: "agents" } },
+      { label: "Search", collapsed: true, autogenerate: { directory: "search" } },
+      { label: "Agent board", collapsed: true, autogenerate: { directory: "board" } },
+      { label: "Integrations", collapsed: true, autogenerate: { directory: "integrations" } },
+      { label: "Workspace", collapsed: true, autogenerate: { directory: "workspace" } },
+      { label: "Self-hosting", collapsed: true, autogenerate: { directory: "self-hosting" } },
+      "changelog",
+    ],
+  },
 });
 
 export default defineConfig({
