@@ -135,6 +135,8 @@ const uid =
      command (github-light / github-dark): the program, then its arguments. */
   .nb-pm-cmd { color: #6f42c1; }
   .nb-pm-args { color: #032f62; }
-  :global([data-mode="dark"]) .nb-pm-cmd { color: #b392f0; }
-  :global([data-mode="dark"]) .nb-pm-args { color: #9ecbff; }
+  @media (prefers-color-scheme: dark) {
+    .nb-pm-cmd { color: #b392f0; }
+    .nb-pm-args { color: #9ecbff; }
+  }
 </style>

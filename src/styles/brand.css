@@ -25,8 +25,25 @@
   --nb-h1-weight: 500;
   --nb-h1-tracking: -0.035em;
 }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nb-background: #15151c;
+    --nb-foreground: #f1f0f9;
+    --nb-card: #1e1e28;
+    --nb-muted: #262633;
+    --nb-muted-foreground: #bfbdcf;
+    --nb-accent: #313048;
+    --nb-primary: #acafff;
+    --nb-primary-hover: #c9caff;
+    --nb-brand: #b4b6ff;
+    --nb-brand-wash: #303048;
+    --nb-border: #3a3949;
+    --nb-border-strong: #77768d;
+    --nb-ring: #b4b6ff;
+  }
+}
 h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
-.docs-content { color: #565663; }
-.opencrawl-wordmark { display: inline-flex; align-items: center; gap: 0.45rem; color: #1b1b22; white-space: nowrap; }
+.docs-content { color: var(--nb-muted-foreground); }
+.opencrawl-wordmark { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--nb-foreground); white-space: nowrap; }
 .opencrawl-wordmark span { font-family: Geist, system-ui, sans-serif; font-size: 1.4rem; font-weight: 650; letter-spacing: -0.05em; }
 .opencrawl-wordmark img { flex: none; }
