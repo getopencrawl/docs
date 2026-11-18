@@ -47,3 +47,67 @@ h1, h2, h3 { font-family: 'Funnel Display', system-ui, sans-serif; }
 .opencrawl-wordmark { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--nb-foreground); white-space: nowrap; }
 .opencrawl-wordmark span { font-family: Geist, system-ui, sans-serif; font-size: 1.4rem; font-weight: 650; letter-spacing: -0.05em; }
 .opencrawl-wordmark img { flex: none; }
+
+.topic-directory { container-type: inline-size; }
+.topic-directory > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 1.6rem 1rem;
+  padding: 0;
+  list-style: none;
+}
+.topic-directory > ul > li {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  font-size: .875rem;
+  line-height: 1.45;
+}
+.topic-directory li > a:first-child {
+  display: block;
+  margin-bottom: .3rem;
+  color: var(--nb-foreground);
+  font: 550 1.12rem/1.25 'Funnel Display', system-ui, sans-serif;
+  text-decoration: none;
+}
+.topic-directory li > a:first-child img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  margin: 0 0 .65rem;
+  border-radius: .375rem;
+}
+.topic-directory li > a:first-child:hover { color: var(--nb-primary); }
+.topic-directory a:focus-visible {
+  outline: 2px solid var(--nb-ring);
+  outline-offset: 3px;
+}
+.topic-shortcuts li > a:first-child {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  height: 100%;
+  margin: 0;
+  border-radius: .375rem;
+  background: var(--nb-card);
+  padding-inline-end: .75rem;
+}
+.topic-shortcuts li > a:first-child img {
+  width: 5.5rem;
+  margin: 0;
+}
+@container (max-width: 26rem) {
+  .topic-directory > ul { grid-template-columns: 1fr; gap: 1rem; }
+  .topic-directory:not(.topic-shortcuts) li {
+    position: relative;
+    min-height: 4rem;
+    padding-inline-start: 6.5rem;
+  }
+  .topic-directory:not(.topic-shortcuts) li > a:first-child img {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 5.75rem;
+    margin: 0;
+  }
+}
