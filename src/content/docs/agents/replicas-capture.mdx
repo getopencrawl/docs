@@ -3,42 +3,32 @@ title: Record new Replicas chats
 description: Set up ongoing capture for Claude Code and Codex in a shared Replicas environment.
 ---
 
-You’ll need an OpenCrawl workspace admin and a Replicas account that can edit the team environment. If you’ve already imported history, start here to record **new** chats.
+Sign in as an OpenCrawl workspace admin. In Replicas, use an account that can edit your team’s environment.
 
 ## 1. Open capture setup
 
-In OpenCrawl, go to **Integrations → Replicas → Set up capture**. This link appears after you start a history import. You can also open [Replicas capture setup](https://app.getopencrawl.com/agent-setup#replicas-capture) directly. On a self-hosted instance, open **Setup** or **Agent setup** on your own host.
+In OpenCrawl, open **Integrations** and click **Set up capture** on the Replicas card. The link appears after you start a history import. You can also open [capture setup directly](https://app.getopencrawl.com/agent-setup#replicas-capture). On a self-hosted instance, use **Setup** or **Agent setup** on your own host.
 
 ![The Replicas integration card with Set up capture in the lower right.](/images/docs/replicas-capture/integration.jpg)
 
 ## 2. Copy the setup prompt
 
-Under **Record new Replicas chats**, choose **Install on Replicas**. If your browser asks you to copy the selected text yourself, copy the whole prompt. It expires in 30 minutes. You can get a fresh one from the same button.
-
-![The Record new Replicas chats section in OpenCrawl, with the Install on Replicas button.](/images/docs/replicas-capture/setup.jpg)
+Click **Install on Replicas**. If the browser shows selected text, copy it. The prompt expires in 30 minutes. Click the same button for a fresh one.
 
 ## 3. Choose your Replicas environment
 
-In [Replicas](https://app.replicas.dev/), check the organization name in the upper left and choose **New workspace**. Select your team’s environment using the control above the message box.
+In [Replicas](https://app.replicas.dev/), check the organization name in the upper left and open **New workspace**. Choose your team’s environment just above the message box.
 
-![Empty Replicas workspace with the environment control directly above the Claude Code message box. In a fresh organization it reads No environments configured.](/images/docs/replicas-capture/new-workspace.jpg)
+![The environment selector is directly above the Replicas message box. In a new organization it reads No environments configured.](/images/docs/replicas-capture/new-workspace.jpg)
 
-**Starting with no environments?** Click **No environments configured → New environment**. Leave **Source** set to **Plain**, give the environment a **Name**, and leave **Personal** off to share it with your team. Click **Create**, then return to **New workspace** and select the environment you just named. [Replicas environment guide](https://docs.replicas.dev/features/environments)
-
-![The New environment form in Replicas with Plain selected, an empty Name field, the Personal switch off, and Create in the lower right.](/images/docs/replicas-capture/new-environment.jpg)
+If you see **No environments configured**, follow that link and click **New environment**. Keep **Source** set to **Plain**, enter a name, leave **Personal** off, and click **Create**. Return to **New workspace** and select it. [Replicas environment guide](https://docs.replicas.dev/features/environments)
 
 ## 4. Send the setup prompt
 
-The agent settings are at the lower right of the message box. To switch agents, open those settings and choose **Harness → Claude Code** or **Codex**. Paste the prompt you copied from OpenCrawl into the message box and press **Send**. You can also send it in an existing Claude Code or Codex chat in the same environment.
-
-![Replicas agent settings with Harness open, Claude Code selected, and Codex listed below it.](/images/docs/replicas-capture/harness.jpg)
+Paste the prompt into a Claude Code or Codex chat in that environment and send it. Either agent can set up capture for both.
 
 ## 5. Check a fresh chat
 
-Once the agent finishes setup and the environment is ready, choose **New workspace** again and select the same environment. Send a distinctive message such as **Reply with “capture check complete”.** An existing workspace can keep its earlier setup.
-
-Open **Sessions** in OpenCrawl and select the new chat. Look for both your message and the agent’s reply, as in this example. Repeat with the other agent if your team uses both.
-
-![Example OpenCrawl session labeled Codex and Replicas. Alex asks for “capture check complete” and Codex replies with those words.](/images/docs/replicas-capture/transcript.jpg)
+When setup finishes, start a **new workspace** in the same environment. Send **Reply with “capture check complete”.** Open the chat in OpenCrawl **Sessions** and confirm you can see your message and the reply.
 
 Uploads use the workspace identity. Teammates can use this environment without signing in to OpenCrawl inside Replicas. Recording shares user and assistant messages, including intermediate replies, and tool inputs and outputs with your OpenCrawl team. Human authorship labels are best effort. Incognito is unavailable in Replicas. The organization API key is only needed for [importing retained history](/integrations/replicas/).
