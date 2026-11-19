@@ -1,0 +1,14 @@
+---
+title: Record new Replicas chats
+description: Set up ongoing capture for Claude Code and Codex in a shared Replicas environment.
+---
+
+OpenCrawl can record new Claude Code and Codex chats from a Replicas environment. If you’ve already imported history, you can go straight to setup.
+
+1. **Copy the setup prompt in OpenCrawl.** As a workspace admin, open [Replicas capture setup](https://app.getopencrawl.com/agent-setup#replicas-capture) and choose **Install on Replicas**. You can also get there from **Integrations → Replicas → Set up capture** after starting a history import. On a self-hosted instance, use **Setup** or **Agent setup** on your own OpenCrawl host.
+2. **Paste it into Replicas.** Check the organization name in Replicas, choose the environment your team uses, and open a workspace in it. If you’re starting from scratch, create a team environment under **Environments** first. Paste the prompt into a Claude Code or Codex chat within 30 minutes. Use a Replicas account with permission to edit that environment. The agent configures capture for new workspaces there. [Replicas environments](https://docs.replicas.dev/features/environments)
+3. **Verify a new chat.** Once the environment is ready, create a **new workspace** from it. In a fresh chat, send a distinctive message such as “Reply with ‘capture check complete’.” Open **Sessions** in OpenCrawl and find that chat. Confirm you can see both your message and the reply. Repeat in the other agent if your team uses both. An existing workspace can keep the setup it had when it started.
+
+The workspace identity authenticates uploads. Teammates can use the configured environment without signing in to OpenCrawl inside Replicas. Recording shares messages, including intermediate assistant replies, and tool inputs and outputs with your OpenCrawl team. Human authorship labels are best effort. Incognito is unavailable in Replicas.
+
+If the prompt expires, choose **Install on Replicas** again. The organization API key is only needed for [importing retained history](/integrations/replicas/).
