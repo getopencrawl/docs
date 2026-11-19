@@ -17,15 +17,23 @@ Under **Record new Replicas chats**, choose **Install on Replicas**. If your bro
 
 ![The Record new Replicas chats section in OpenCrawl, with the Install on Replicas button.](/images/docs/replicas-capture/setup.jpg)
 
-## 3. Paste the prompt into Replicas
+## 3. Choose your Replicas environment
 
-In [Replicas](https://app.replicas.dev/), check the organization name. Choose **New workspace**, select the **environment** your team uses, and choose **Claude Code** or **Codex**. Paste the setup prompt into the message box and send it. If you already have a workspace in that environment, you can paste the prompt into a chat there. If you need a team environment first, create one under **Environments**. [Replicas environment guide](https://docs.replicas.dev/features/environments)
+In [Replicas](https://app.replicas.dev/), check the organization name in the upper left and choose **New workspace**. Select your team’s environment using the control above the message box.
 
-![Replicas workspace with New workspace and Environments in the upper-left sidebar, and the Claude Code message box at the bottom.](/images/docs/replicas-capture/workspace.jpg)
+![Empty Replicas workspace with the environment control directly above the Claude Code message box. In a fresh organization it reads No environments configured.](/images/docs/replicas-capture/new-workspace.jpg)
 
-The [Replicas demo](https://replicas.dev/landing/integrations/dashboard.png) shows an open workspace. Paste your prompt in the message box at the bottom.
+**Starting with no environments?** Click **No environments configured → New environment**. Leave **Source** set to **Plain**, give the environment a **Name**, and leave **Personal** off to share it with your team. Click **Create**, then return to **New workspace** and select the environment you just named. [Replicas environment guide](https://docs.replicas.dev/features/environments)
 
-## 4. Check a fresh chat
+![The New environment form in Replicas with Plain selected, an empty Name field, the Personal switch off, and Create in the lower right.](/images/docs/replicas-capture/new-environment.jpg)
+
+## 4. Send the setup prompt
+
+The agent settings are at the lower right of the message box. To switch agents, open those settings and choose **Harness → Claude Code** or **Codex**. Paste the prompt you copied from OpenCrawl into the message box and press **Send**. You can also send it in an existing Claude Code or Codex chat in the same environment.
+
+![Replicas agent settings with Harness open, Claude Code selected, and Codex listed below it.](/images/docs/replicas-capture/harness.jpg)
+
+## 5. Check a fresh chat
 
 Once the agent finishes setup and the environment is ready, choose **New workspace** again and select the same environment. Send a distinctive message such as **Reply with “capture check complete”.** An existing workspace can keep its earlier setup.
 
