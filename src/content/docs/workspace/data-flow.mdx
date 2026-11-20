@@ -1,0 +1,28 @@
+---
+title: Data flow by deployment
+description: Follow agent captures and connector imports from their source to storage and search in OpenCrawl Cloud, Cloud with your own S3 bucket, and open-source self-hosting.
+---
+
+When you choose where to run OpenCrawl, consider both the original files and the searchable text derived from them. In Cloud, OpenCrawl operates the service and the search index. You can store the original files in your own S3 bucket. With the open-source deployment, your team operates the service, storage, and index.
+
+![Three data flows showing who operates the service, object store, and search index. Only the bucket changes hands in Cloud with custom S3. In self-hosting your team operates all three.](/images/docs/workspace-data-flow.svg)
+
+[Open the full-size diagram](/images/docs/workspace-data-flow.svg)
+
+## OpenCrawl Cloud
+
+A connected agent sends recorded sessions, captured attachments, and imported memories to OpenCrawl. If you connect a source such as Slack or GitHub, a connector imports the records you authorize. OpenCrawl stores these source objects in managed S3. Its indexing workers read the objects and write searchable text and source references to the hosted index.
+
+## OpenCrawl Cloud with your own S3 bucket
+
+Choose **Custom S3 Storage** when you create the workspace. Supply S3 access credentials for your bucket or a dedicated prefix. The hosted service uses those credentials to store sessions, attachments, memories, and connector imports there. Teammates connect their agents to OpenCrawl using their workspace accounts.
+
+OpenCrawl's workers read from your bucket to build the hosted search index. Searchable passages from your content therefore also reside in OpenCrawl Cloud. OpenCrawl manages workspace membership, permissions, and the encrypted S3 credentials.
+
+## Open-source self-hosting
+
+Point agents at your installation’s HTTPS address. Your service receives captures, and any connectors you enable import records into your object store. Your workers read those objects and write searchable passages to your index. Your team also runs the application database that holds accounts and workspace state. See the [self-hosting guide](/self-hosting/) for Docker Compose and Kubernetes options.
+
+## What comes back to an agent
+
+In all three deployments, an agent or console user sends a query to the workspace API. The API checks the caller’s access and returns matching excerpts and source references. An agent can then fetch a passage for more context. The workspace you connect to determines which service handles that request. See [search and fetch](/search/) and [capture privacy](/workspace/privacy/).

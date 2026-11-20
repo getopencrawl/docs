@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="570" height="550" viewBox="0 0 570 550" role="img" aria-labelledby="title desc">
+  <title id="title">OpenCrawl data flow by deployment</title>
+  <desc id="desc">Agents upload captures and connectors import records. In Cloud, the hosted service writes source objects to managed S3 and workers index the content in hosted search. With custom S3 the service writes to your bucket and indexes it in hosted search. In self-hosting your team operates the service, object store, and index. Readers send queries to their workspace and receive permitted results.</desc>
+  <defs>
+    <marker id="tip" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 7 4 0 8Z" fill="#55516a"/></marker>
+  </defs>
+  <style>
+    text{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;fill:#242039}
+    .heading{font-size:20px;font-weight:680}
+    .label{font-size:17px;font-weight:650;text-anchor:middle}
+    .owner{font-size:15px;text-anchor:middle}
+    .cloud rect{fill:#efeafa;stroke:#9b85c0}
+    .cloud .owner{fill:#5d457c}
+    .team rect{fill:#e2f3ed;stroke:#71a893}
+    .team .owner{fill:#2b624f}
+    .arrow{fill:none;stroke:#55516a;stroke-width:1.8}
+    .caption{font-size:16px;fill:#474257}
+  </style>
+  <rect x=".5" y=".5" width="569" height="549" rx="15" fill="#fdfcfe" stroke="#dedbe4"/>
+  <text x="16" y="30" class="heading">Capture and indexing</text>
+  <text x="16" y="55" class="caption">Agent uploads and connector imports enter at the left.</text>
+  <path d="M16 72H554" stroke="#d9d5e0"/>
+  <g aria-label="OpenCrawl Cloud">
+    <text x="16" y="106" class="heading">OpenCrawl Cloud</text>
+    <g class="cloud">
+      <rect x="16" y="120" width="158" height="62" rx="9"/>
+      <text x="95" y="146" class="label">Hosted service</text>
+      <text x="95" y="167" class="owner">OpenCrawl</text>
+    </g>
+    <g class="cloud">
+      <rect x="206" y="120" width="158" height="62" rx="9"/>
+      <text x="285" y="146" class="label">Managed S3</text>
+      <text x="285" y="167" class="owner">OpenCrawl</text>
+    </g>
+    <g class="cloud">
+      <rect x="396" y="120" width="158" height="62" rx="9"/>
+      <text x="475" y="146" class="label">Search index</text>
+      <text x="475" y="167" class="owner">OpenCrawl</text>
+    </g>
+    <path class="arrow" d="M178 151H200" marker-end="url(#tip)"/>
+    <path class="arrow" d="M368 151H390" marker-end="url(#tip)"/>
+  </g>
+  <g aria-label="Cloud with your S3 bucket">
+    <text x="16" y="222" class="heading">Cloud with your S3 bucket</text>
+    <g class="cloud">
+      <rect x="16" y="236" width="158" height="62" rx="9"/>
+      <text x="95" y="262" class="label">Hosted service</text>
+      <text x="95" y="283" class="owner">OpenCrawl</text>
+    </g>
+    <g class="team">
+      <rect x="206" y="236" width="158" height="62" rx="9"/>
+      <text x="285" y="262" class="label">Your S3 bucket</text>
+      <text x="285" y="283" class="owner">Your team</text>
+    </g>
+    <g class="cloud">
+      <rect x="396" y="236" width="158" height="62" rx="9"/>
+      <text x="475" y="262" class="label">Search index</text>
+      <text x="475" y="283" class="owner">OpenCrawl</text>
+    </g>
+    <path class="arrow" d="M178 267H200" marker-end="url(#tip)"/>
+    <path class="arrow" d="M368 267H390" marker-end="url(#tip)"/>
+  </g>
+  <g aria-label="Open-source self-hosting">
+    <text x="16" y="338" class="heading">Open-source self-hosting</text>
+    <g class="team">
+      <rect x="16" y="352" width="158" height="62" rx="9"/>
+      <text x="95" y="378" class="label">Your service</text>
+      <text x="95" y="399" class="owner">Your team</text>
+    </g>
+    <g class="team">
+      <rect x="206" y="352" width="158" height="62" rx="9"/>
+      <text x="285" y="378" class="label">Object store</text>
+      <text x="285" y="399" class="owner">Your team</text>
+    </g>
+    <g class="team">
+      <rect x="396" y="352" width="158" height="62" rx="9"/>
+      <text x="475" y="378" class="label">Search index</text>
+      <text x="475" y="399" class="owner">Your team</text>
+    </g>
+    <path class="arrow" d="M178 383H200" marker-end="url(#tip)"/>
+    <path class="arrow" d="M368 383H390" marker-end="url(#tip)"/>
+  </g>
+  <path d="M16 435H554" stroke="#d9d5e0"/>
+  <text x="16" y="466" class="heading">Search and retrieval</text>
+  <text x="16" y="494" class="label" style="text-anchor:start">Agent or console</text>
+  <text x="267" y="494" class="label">Workspace API</text>
+  <text x="554" y="494" class="label" style="text-anchor:end">Search index</text>
+  <path class="arrow" d="M163 482H195" marker-end="url(#tip)"/>
+  <path class="arrow" d="M340 482H430" marker-end="url(#tip)"/>
+  <path class="arrow" d="M195 494H163" marker-end="url(#tip)"/>
+  <path class="arrow" d="M430 494H340" marker-end="url(#tip)"/>
+  <text x="16" y="526" class="caption">Queries go right. Permitted results return left.</text>
+</svg>
