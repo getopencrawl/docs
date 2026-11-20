@@ -1,0 +1,31 @@
+---
+title: Use OpenCrawl in Devin Cloud
+description: Install OpenCrawl once on a stock Devin Cloud blueprint and use workspace search, the CLI, and three skills in future sessions.
+---
+
+You can use a stock Devin Cloud blueprint. Install the OpenCrawl plugin once in Devin’s **Customize** settings. Devin loads it when you start a new session, and future sessions at that scope keep getting it while it’s enabled.
+
+## Install the plugin
+
+1. In Devin, open **Customize → Plugins**. Choose **Myself** for your own sessions, or choose your organization to install it for the team. An organization install requires the **Manage plugins** permission.
+2. Choose **Add plugin → From repository**. Enter `getopencrawl/opencrawl-plugins` in the repository field and `plugins/devin` in **Subdirectory**. This selects the Devin package from the shared plugins repository.
+3. Add the plugin. Once indexing finishes, open **opencrawl** in **Customize → MCPs** and sign in to your OpenCrawl workspace. Each member connects their own account for search, including when an admin installs the plugin for the team.
+4. Start a new Devin Cloud session. Use the `opencrawl` skill for workspace search and the bundled CLI, `oc-continue` to pick up an earlier session, or `oc-import-memories` to import your own indexed memories.
+
+## Check it in a fresh session
+
+Give Devin a phrase from a shared session and ask it to run this check.
+
+> Use the OpenCrawl skill to run the bundled CLI with `--version`. Then use the OpenCrawl MCP to check my connection and search for a phrase from a session I’ve shared.
+
+The version confirms the bundled CLI runs. A matching passage confirms the MCP can search your workspace with your account.
+
+For a CLI command that needs your account, ask Devin to run the bundled CLI with `login --no-browser` and approve the device sign-in in your browser. The CLI uses its own credentials. On a VM without Bun, the launcher downloads and verifies the matching native CLI on first use.
+
+## Recording Devin sessions
+
+Installing this plugin gives Devin tools to use. To send Devin transcripts to OpenCrawl, a workspace admin must configure organization recording separately. Follow the [Devin recording setup](https://github.com/getopencrawl/opencrawl-core/blob/main/docs/devin-cloud.md#administrator-setup).
+
+## Switch from the older plugin
+
+If your install uses the `opencrawl-devin` subdirectory, pin that source to its [original release commit](https://github.com/getopencrawl/opencrawl-plugins/commit/a6ac7fe31fc4c8d4e7915139dc12f92f06d61c9e). Add `plugins/devin` at the same scope, enable it, then disable the old source. Run the fresh-session check above. You can re-enable the pinned source if you need to roll back. [Pinning a plugin in Devin](https://docs.devin.ai/product-guides/plugins#pinning-a-plugin)
