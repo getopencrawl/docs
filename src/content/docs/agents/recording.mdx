@@ -8,3 +8,9 @@ In `opencrawl setup`, select the agents under **Record new sessions** and choose
 Start a chat in a selected agent, then look for it in **Sessions**. Review [capture privacy](/workspace/privacy/) before recording sensitive work.
 
 For shared Replicas environments, follow [Record new Replicas chats](/agents/replicas-capture/).
+
+## T3 Code and Conductor
+
+On the Mac where you run T3 Code or Conductor, select **Codex**, **Claude Code**, or both under **Record new sessions**, depending on which agents you use in the app. Finish setup, then start a fresh chat inside the app. Send a distinctive phrase and search for it in OpenCrawl to verify recording.
+
+OpenCrawl CLI 0.4.147 or later identifies both apps for new Codex and Claude Code sessions. If you have an older native installation, run `opencrawl update`. To find a chat by app, ask your connected agent to search for the phrase with `filters.clientApps` set to `["t3-code"]` or `["conductor"]`.
