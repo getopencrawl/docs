@@ -13,3 +13,5 @@ First-time guided setup is available on macOS. Run `opencrawl setup`, choose you
 If you leave partway through, run `opencrawl setup` again to resume. For a first install, follow [Getting started](/).
 
 For Devin Cloud, open **Customize → Plugins → Add plugin → From repository**, enter `getopencrawl/opencrawl-plugins`, and select the subdirectory `plugins/devin`. Connect your account under **Customize → MCPs**, then start a new session. Each member uses their own OpenCrawl login for search. Organization transcript capture is configured separately. [Devin plugin guide](https://github.com/getopencrawl/opencrawl-plugins/tree/main/plugins/devin).
+
+If you installed the earlier `opencrawl-devin` subdirectory, pin it to its [original release commit](https://github.com/getopencrawl/opencrawl-plugins/commit/a6ac7fe31fc4c8d4e7915139dc12f92f06d61c9e) before switching. Add `plugins/devin` at the same scope, enable it, and disable the previous source. In a new session, ask Devin to check the bundled CLI version and search your workspace. The disabled source is available for rollback.
