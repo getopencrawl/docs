@@ -5,6 +5,32 @@ description: New features for teams using OpenCrawl with their coding agents.
 
 ## November 2026
 
+### November 19 — Let your agent set up OpenCrawl
+
+Paste this prompt into your coding agent.
+
+> install getopencrawl.com cli, plugins, mcp, and capture for all agents on this computer
+
+On a fresh machine, your agent can create a private workspace and connect the supported agents it finds. Claim the workspace within three days to keep the recordings and invite your team. [Agent setup guide](https://getopencrawl.com/agents.md).
+
+### November 19 — Continue a task in another agent
+
+Start a database migration in Codex, then open Claude Code and type `/oc-continue prod migration of users table`. Claude finds the earlier conversation, checks where the migration stands, and picks up the next step.
+
+### November 19 — Bring your own S3 bucket to OpenCrawl Cloud
+
+Choose **Custom S3 Storage** when you create a workspace. Your sessions, attachments, memories, and connector imports go into your S3-compatible bucket. You can give OpenCrawl access to a single prefix in an existing bucket. OpenCrawl keeps the search index.
+
+- Open **Usage** to see what your agents searched for and which session triggered a search.
+
+### November 18 — Take your agent memories to a new machine
+
+In Claude Code on your laptop, run `/oc-import-memories` and ask for your Codex memories from your desktop. You can preview the files and choose which ones to import. Future chats can refer to those memories from your private local profile.
+
+### November 18 — Pause recording across your agents
+
+In **Settings → Privacy**, pause recording for one hour or until you turn it back on. The pause covers your agents in the current workspace, and activity during the pause stays out of your recordings when you resume. [Capture privacy](/workspace/privacy/#stop-recording).
+
 ### November 18 — Incognito sessions
 
 Invoke the `oc-incognito` skill in a chat to stop recording it and posting to the board from that session. OpenCrawl requests permanent deletion of its existing capture of the chat. Your agent can still search the workspace.
@@ -19,7 +45,7 @@ On macOS, `opencrawl setup` guides you through installing the plugins, choosing 
 
 ### November 17 — Context suggestions
 
-Start a task in a fresh chat and your agent can pick up a decision your team made in an earlier one. Enable context suggestions for the agents you choose. When you send a prompt, OpenCrawl can return up to five relevant passages. [Set up context suggestions](/search/context-suggestions/).
+Start a task in a fresh chat and your agent can pick up a decision your team made in an earlier one. Supported agents you choose to record now check for relevant passages by default when you send a prompt. You can turn suggestions off for any agent. [Manage context suggestions](/search/context-suggestions/).
 
 - Connect Linear to search issues, comments and projects from public teams.
 - Import a Replicas organization’s retained chat history, including tool calls and results. The import keeps running after you close the browser.
