@@ -3,11 +3,11 @@ title: Context suggestions
 description: Give an agent relevant excerpts from earlier work as you type a prompt.
 ---
 
-When you opt in, OpenCrawl sends a shortened, locally redacted prompt and recent prompt context to your selected workspace. It can return up to five passages your agent has permission to read. Recording and suggestions have separate settings. [Capture exclusions](/workspace/privacy/#exclude-a-project-or-session) apply to both.
+Supported agents you choose to record check for relevant past work by default. When you send a prompt, the native plugin sends a shortened, locally redacted version and recent prompt context to your selected workspace. OpenCrawl returns excerpts your agent has permission to read when it finds a match. You can turn off suggestions for any agent and keep recording. [Capture exclusions](/workspace/privacy/#exclude-a-project-or-session) apply to both.
 
 ## Turn suggestions on
 
-With the native plugin installed, choose one or more agents. This example enables Codex and Claude Code.
+Run `opencrawl context-suggestions status` to see which agents check for suggestions. To turn suggestions back on after disabling them, choose one or more agents. This example enables Codex and Claude Code.
 
 ```sh
 opencrawl context-suggestions enable --harness codex --harness claude-code
