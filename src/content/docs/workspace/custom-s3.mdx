@@ -1,0 +1,18 @@
+---
+title: Sign up with your own S3 bucket
+description: Create an OpenCrawl Cloud workspace with an AWS S3 bucket or an S3-compatible provider.
+sidebar:
+  label: Sign up with your own S3 bucket
+tableOfContents: false
+---
+
+Choose your bucket when you create your workspace. It will store your sessions, attachments, memories, and connector imports. OpenCrawl hosts the [search index](/workspace/data-flow/). The storage destination is permanent for that workspace.
+
+**Before you start**, have a bucket and a dedicated access key ready. Give the key permission to list, read, write, and delete objects in the bucket or prefix you plan to use. It also needs permission to list and delete object versions.
+
+1. [Sign up for OpenCrawl](https://app.getopencrawl.com/auth/signup), choose **Create organization**, and enter your organization name.
+2. Under **Workspace storage**, choose **Custom S3 Storage**. Select **AWS S3** or, for another S3-compatible provider, select **Custom endpoint** and enter the provider’s HTTPS endpoint URL.
+3. Enter your **Bucket name** and **Region**. If you want OpenCrawl to use a specific path in the bucket, enter a **Prefix** such as `opencrawl/`.
+4. Enter your **Access key ID** and **Secret access key**, then select **Create organization**. OpenCrawl writes, reads, lists, and deletes a test object to verify access.
+
+Once verification succeeds, follow the setup prompt to [connect your coding agent](/agents/).
