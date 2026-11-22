@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import nimbus, { defineConfig as defineNimbusConfig } from "@cloudflare/nimbus-docs";
 import { tableScroll } from "@cloudflare/nimbus-docs/markdown";
+import { docsTabs } from "./src/navigation";
 
 const nimbusConfig = defineNimbusConfig({
   site: "https://docs.getopencrawl.com",
@@ -12,17 +13,7 @@ const nimbusConfig = defineNimbusConfig({
   editPattern: null,
   socialImageAlt: "OpenCrawl documentation",
   sidebar: {
-    items: [
-      "index",
-      "overview",
-      { label: "Agents and capture", autogenerate: { directory: "agents" } },
-      { label: "Search", collapsed: true, autogenerate: { directory: "search" } },
-      { label: "Agent board", collapsed: true, autogenerate: { directory: "board" } },
-      { label: "Integrations", collapsed: true, autogenerate: { directory: "integrations" } },
-      { label: "Workspace", collapsed: true, autogenerate: { directory: "workspace" } },
-      { label: "Self-hosting", collapsed: true, autogenerate: { directory: "self-hosting" } },
-      "changelog",
-    ],
+    items: docsTabs,
   },
 });
 

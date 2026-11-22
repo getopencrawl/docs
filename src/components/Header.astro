@@ -8,6 +8,7 @@ import SearchTrigger from "./ui/search/SearchTrigger.astro";
 import { ShortcutsToggle } from "./ui/shortcuts";
 import { config } from "virtual:nimbus/config";
 import { getCollectionUrl, getSidebarSections, stripBase, withBase } from "@cloudflare/nimbus-docs/runtime";
+import { docsHeaderSections } from "../navigation";
 
 interface Props {
   /** Astro collection id for the current page, forwarded from DocsLayout. */
@@ -23,15 +24,14 @@ interface Props {
   sections?: SidebarSection[];
 }
 
-// `entryId` is part of Props as a forward-compat hook (the version-switcher
-// recipe reads it) but the base Header doesn't use it — leave it off the
-// destructure to avoid an unused-var warning.
-const { collection, showSidebar = true, sections: sectionsProp } = Astro.props;
+const { collection, entryId, showSidebar = true, sections: sectionsProp } = Astro.props;
 
 // Normalize trailing slash so isActive matches sidebar hrefs.
 const currentSlug = stripBase(Astro.url.pathname, import.meta.env.BASE_URL).replace(/\/$/, "") || "/";
 const sidebarSections =
-  sectionsProp ?? (await getSidebarSections(currentSlug, { collection }));
+  sectionsProp ?? (collection === "docs" || !collection
+    ? docsHeaderSections(entryId)
+    : await getSidebarSections(currentSlug, { collection }));
 // An API reference beside the docs isn't in the docs sidebar, so the docs and
 // each reference become the tabs. A reference served at the root is the site.
 const apiHrefs = (

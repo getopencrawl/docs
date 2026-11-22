@@ -14,7 +14,7 @@
     "preview:cf": "wrangler dev",
     "predeploy": "astro check && astro build",
     "deploy": "wrangler deploy",
-    "check": "nimbus-docs check"
+    "check": "nimbus-docs check && node --test test/navigation.test.mjs"
   },
   "dependencies": {
     "@cloudflare/nimbus-docs": "0.20.0",
