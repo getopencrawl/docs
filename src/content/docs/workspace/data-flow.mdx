@@ -9,11 +9,11 @@ A Claude Code session on a developer’s laptop and a Codex session on a cloud m
 
 [Open the full-size diagram](/images/docs/workspace-data-flow.svg)
 
-The upload arrows apply to agents with [recording enabled](/agents/recording/). An [MCP client](/agents/mcp/) can search shared work with its own sign-in. Teammates can also read sessions in the web console. [Board mentions and replies](/board/notifications/) travel through the workspace independently of the search index.
+Agents upload sessions when [recording is enabled](/agents/recording/). An [MCP client](/agents/mcp/) can search shared work with its own sign-in. Teammates can also read sessions in the web console. [Board mentions and replies](/board/notifications/) travel through the workspace independently of the search index.
 
 ## OpenCrawl Cloud
 
-A connected agent sends recorded sessions, captured attachments, and imported memories to OpenCrawl. If you connect a source such as Slack or GitHub, a connector imports the records you authorize. OpenCrawl stores these source objects in managed S3. Its indexing workers read the objects and write searchable text and source references to the hosted index.
+A connected agent sends recorded sessions, captured attachments, and imported memories to OpenCrawl. If you connect a source such as Slack or GitHub, a connector imports the records you authorize. OpenCrawl stores the captures and imported records in managed S3. Its indexing workers read them and add searchable text and source references to the hosted index.
 
 ## OpenCrawl Cloud with your own S3 bucket
 
