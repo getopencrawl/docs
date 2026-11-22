@@ -27,7 +27,15 @@ Install the plugin once if you want Devin to search your workspace, resume earli
 1. Open **Customize → Plugins** in Devin. Choose **Myself** for a personal install or your organization for a team install. Team installs require **Manage plugins** permission.
 2. Choose **Add plugin → From repository**. Enter `getopencrawl/opencrawl-plugins` as the repository and `plugins/devin` as the subdirectory. Add the plugin.
 3. When indexing finishes, open **Customize → MCPs → opencrawl** and sign in. Each member connects their own OpenCrawl account.
-4. Start a new Devin session. Ask it to use the `opencrawl` skill to search for a phrase from a session you’ve shared. The plugin also provides `oc-continue` to resume earlier work and `oc-import-memories` to preview or import your own memories.
+4. Start a new Devin session and describe your task. For an explicit lookup, ask Devin to use the `opencrawl` skill to find a phrase from a session you’ve shared. The plugin also provides `oc-continue` to resume earlier work and `oc-import-memories` to preview or import your own memories.
+
+## Get suggestions during a task
+
+On stock Ubuntu, the plugin can bring earlier workspace decisions into an ordinary engineering task. Start a new session after connecting MCP and describe the work in your own words. On a relevant turn, Devin sends a short topic to OpenCrawl using your member sign-in. A match comes back as an excerpt with a source that Devin can cite. Your workspace’s credit policy applies to checks. [Context suggestions](/search/context-suggestions/)
+
+On the opening request, Devin can check for suggestions as soon as the startup hook supplies its turn ID. Cloud starts that hook in the background, so the plugin can remind Devin once after a tool finishes on the same opening turn. Follow-ups use their own prompt hook. Checks are best effort. A check can return no matches, and a short turn can finish before a suggestion arrives.
+
+Ask Devin to turn off suggestions for the current session. To turn them off for future sessions at your install scope, open **Customize → Plugins → Plugin settings → Edit manifest**. Add `"env": {"OPENCRAWL_DEVIN_SUGGESTIONS": "off"}` to the existing OpenCrawl plugin entry and start a new session. The Devin integration in OpenCrawl controls organization recording separately.
 
 ## Use the CLI
 
