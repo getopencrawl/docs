@@ -11,6 +11,14 @@ Use **Main** to explain how features work together, what people can see, and whi
 
 The logo, lavender palette, Funnel Display headings, Switzer body text, and Geist wordmark match https://getopencrawl.com. Brand overrides live in `src/styles/brand.css`; font files load from the brand domain. The surrounding layouts and components come from the official Nimbus empty starter, recorded in `nimbus.json`.
 
+### Documentation illustrations
+
+Use square pixels and four flat colors. An abstract scene or a physical object works when its connection to the page is clear. The existing illustrations use periwinkle `#7D82FF` for the background, dark ink `#24223A` for outlines, lavender `#BABCFF` for shading, and near-white `#F5F4FF` for highlights. See [Import past sessions](public/images/docs/pixel/import-history.png) for the line weight and sparse stippled shadows.
+
+Add a header when a page has more than four prose paragraphs. Count quoted prose and skip headings, lists, tables, code, and image-only blocks.
+
+Draw on a 222 × 82 grid and export at 4× with nearest-neighbor scaling. Put the PNG under `public/images/docs/pixel/headers/` and include it as the first block in the page body. Use short alt text describing the subject. The same image and description appear in the Markdown edition.
+
 ## Agent access
 
 Nimbus generates these from the same source content during every build:
