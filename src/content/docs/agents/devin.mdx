@@ -3,16 +3,20 @@ title: Connect Devin Cloud
 description: Record new Devin sessions in OpenCrawl and give Devin access to workspace search, skills, and the CLI.
 ---
 
+![An entry in an open ledger has a matching reference card in an index box.](/images/docs/pixel/headers/data-flow.png)
+
 ## Record Devin sessions
 
 Connect your Devin organization once to make new sessions searchable in your OpenCrawl workspace. OpenCrawl reads them through Devin’s hosted APIs. You can keep using your stock blueprint.
 
-1. As a workspace admin, open **Integrations → Devin → Connect** in OpenCrawl.
-2. In the Devin organization you want to record, open **Settings → Devin API → Service users**. Create an organization service user with permission to view organization sessions, then copy its API key.
+1. As a workspace admin, open [Integrations](https://app.getopencrawl.com/integrations) in OpenCrawl and select **Connect** on the Devin card.
+2. Follow **Service users in Devin**. Check that Devin shows the organization you want to record. Select **Provision service user**, give it a name, choose a role that can view organization sessions and read session events, and copy the generated token.
 3. Return to OpenCrawl, enter the key, review what workspace members will be able to search, and select **Connect and record**.
 4. Start a new Devin session and give it a task. When the Devin card shows **View indexed session**, open it to see the transcript. You can also search OpenCrawl for a phrase from the conversation.
 
-**Connected** means OpenCrawl accepted the organization credential. The capture status shows when the first session is indexed or when recording needs attention. OpenCrawl records new sessions visible to the credential, including prompts, replies, available tool activity, shell commands and the output excerpts Devin supplies.
+**Connected** means OpenCrawl accepted the organization credential. **Recording new sessions** means you can open an indexed transcript. If recording falls behind, the card shows the delay and OpenCrawl retries automatically.
+
+Capture includes prompts, replies, available tool activity, shell commands and the output excerpts Devin supplies. To find a particular shell result, ask your agent to search the Devin session with tool outputs included.
 
 To stop recording, open **Integrations → Devin → Manage → Disconnect**. Previously indexed sessions stay in the workspace.
 
