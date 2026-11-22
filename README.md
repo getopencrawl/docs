@@ -41,7 +41,7 @@ Cloudflare configuration rule `Public docs agent access` disables Browser Integr
 
 Run `npm run typecheck`, `npm run build`, and `npm run check`. GitHub Actions runs these checks for pushes and pull requests.
 
-After signing into the OnePatch Cloudflare account with `npx wrangler login`, run `npm run deploy`. The dedicated `opencrawl-docs` Worker serves only `docs.getopencrawl.com`; Wrangler manages its custom domain and TLS. Publishing currently uses this command, not automatic deployment on Git push.
+Merge a pull request into `main` to publish. Cloudflare Workers Builds checks the site and deploys it to `docs.getopencrawl.com` through the `opencrawl-docs` Worker. To see which commit is live or diagnose a failed build, open the Worker’s **Deployments** and **Builds** in Cloudflare.
 
 Verify the live page, Markdown, indexes, discovery manifests, and 404 handling after publishing. Include a request with a normal library user agent such as Python urllib, not just a browser. Confirm `/index.md` responds with `Content-Type: text/markdown`.
 
