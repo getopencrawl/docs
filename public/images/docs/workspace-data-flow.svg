@@ -68,7 +68,7 @@
   </g>
   <g>
     <rect x="274" y="318" width="190" height="54" rx="8" class="store"/>
-    <text x="286" y="351" class="node" text-anchor="start">Object storage</text>
+    <text x="369" y="351" class="node" text-anchor="middle">Object storage</text>
   </g>
   <g>
     <rect x="274" y="408" width="190" height="54" rx="8" class="service"/>
@@ -77,7 +77,7 @@
   </g>
   <g>
     <rect x="536" y="408" width="190" height="54" rx="8" class="store"/>
-    <text x="548" y="441" class="node" text-anchor="start">Search index</text>
+    <text x="631" y="441" class="node" text-anchor="middle">Search index</text>
   </g>
   <path d="M113 289V314" class="edge" marker-end="url(#tip)"/>
   <path d="M212 345H269" class="edge" marker-end="url(#tip)"/>
