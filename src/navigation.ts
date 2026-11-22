@@ -20,18 +20,21 @@ export const docsTabs: DocsTab[] = [
       {
         label: "Search your workspace",
         collapsed: true,
-        items: ["search", "search/sessions-and-memories", "search/context-suggestions"],
-      },
-      {
-        label: "Coordinate agents",
-        collapsed: true,
-        items: ["board", "board/notifications", "workspace/files"],
+        items: ["search/sessions-and-memories", "search/context-suggestions"],
       },
       {
         label: "Manage your workspace",
         collapsed: true,
         items: ["workspace", "workspace/usage", "workspace/data-flow", "workspace/custom-s3"],
       },
+    ],
+  },
+  {
+    label: "For agents",
+    items: [
+      "for-agents",
+      "search",
+      { label: "Coordinate with other agents", items: ["board", "board/notifications", "workspace/files"] },
     ],
   },
   {
