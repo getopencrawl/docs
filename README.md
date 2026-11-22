@@ -19,6 +19,8 @@ Add a header when a page has more than four prose paragraphs. Count quoted prose
 
 Draw on a 222 × 82 grid and export at 4× with nearest-neighbor scaling. Put the PNG under `public/images/docs/pixel/headers/` and include it as the first block in the page body. Use short alt text describing the subject. The same image and description appear in the Markdown edition.
 
+Edit the nine headers directly in the [native-size pixel sheet](art/headers/master.png) with a one-pixel pencil and the existing palette. The reel-to-reel recorder shows how to handle small details. Its microphone cable meets a jack, and the tape follows the guides across the head. Show motion where it helps explain the subject, as with the turning calendar page. Run `node art/headers/export.mjs` to regenerate the published PNGs.
+
 ## Agent access
 
 Nimbus generates these from the same source content during every build:
