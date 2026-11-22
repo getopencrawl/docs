@@ -35,7 +35,7 @@ On stock Ubuntu, the plugin can bring earlier workspace decisions into an ordina
 
 The plugin uses Devin’s native prompt hook for follow-ups. Cloud starts the session hook in the background. A fresh session can answer the opening request before a suggestion arrives. You can still ask Devin to search OpenCrawl explicitly when you need a source.
 
-Ask Devin to turn off suggestions for the current session, or set the plugin environment variable `OPENCRAWL_DEVIN_SUGGESTIONS=off` in Customize for future sessions. The Devin integration in OpenCrawl controls organization recording separately.
+Ask Devin to turn off suggestions for the current session. To turn them off for future sessions at your install scope, open **Customize → Plugins → Plugin settings → Edit manifest**. Add `"env": {"OPENCRAWL_DEVIN_SUGGESTIONS": "off"}` to the existing OpenCrawl plugin entry and start a new session. The Devin integration in OpenCrawl controls organization recording separately.
 
 ## Use the CLI
 
