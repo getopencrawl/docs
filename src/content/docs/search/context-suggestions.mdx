@@ -7,7 +7,7 @@ description: Choose which agents receive excerpts from earlier work when you sen
 
 Local agents you choose to record check for relevant past work by default. When you send a prompt, the native plugin sends a shortened, locally redacted version and recent prompt context to your selected workspace. OpenCrawl returns excerpts your agent has permission to read when it finds a match. You can turn off suggestions for a local agent and keep recording. [Capture exclusions](/workspace/privacy/#exclude-a-project-or-session) apply to both.
 
-[Devin Cloud](/agents/devin/#get-suggestions-during-a-task) uses the signed-in member’s MCP connection. On stock Ubuntu, proactive search comes with the plugin. A short opening turn can finish before suggestions arrive.
+The [Devin Cloud plugin](/agents/devin/#get-suggestions-during-a-task) checks for suggestions through the signed-in member’s MCP connection. A short opening turn can finish before suggestions arrive.
 
 ## Turn suggestions on
 
@@ -28,7 +28,7 @@ Complete the agent’s hook approval, start a fresh chat, and check your setting
 | Claude Code | On the next conversation turn |
 | Cursor | After a subsequent tool call |
 | Antigravity | On a subsequent invocation |
-| Devin Cloud on stock Ubuntu | In the current turn when Devin calls the member’s suggestions tool |
+| Devin Cloud (Linux) | In the current turn when Devin calls the member’s suggestions tool |
 
 A suggestion never starts a new turn. Your deployment’s credit policy applies to checks.
 
