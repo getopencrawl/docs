@@ -6,6 +6,7 @@ const rows = [
   ['quickstart', 'overview', 'replicas-capture'],
   ['changelog', 'context-suggestions', 'sessions-memories'],
   ['kubernetes', 'agent-handoffs', 'data-flow'],
+  ['devin-cloud'],
 ];
 
 const width = 222;
@@ -14,7 +15,7 @@ const sheet = fileURLToPath(new URL('./master.png', import.meta.url));
 const output = new URL('../../public/images/docs/pixel/headers/', import.meta.url);
 const metadata = await sharp(sheet).metadata();
 if (metadata.width !== width * rows[0].length || metadata.height !== height * rows.length) {
-  throw new Error('The master sheet must contain nine 222 × 82 tiles.');
+  throw new Error('The master sheet dimensions must match the tile rows above.');
 }
 
 for (const [row, tiles] of rows.entries()) {

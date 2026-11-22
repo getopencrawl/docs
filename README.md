@@ -13,13 +13,15 @@ The logo, lavender palette, Funnel Display headings, Switzer body text, and Geis
 
 ### Documentation illustrations
 
-Use square pixels and four flat colors. An abstract scene or a physical object works when its connection to the page is clear. The existing illustrations use periwinkle `#7D82FF` for the background, dark ink `#24223A` for outlines, lavender `#BABCFF` for shading, and near-white `#F5F4FF` for highlights. See [Import past sessions](public/images/docs/pixel/import-history.png) for the line weight and sparse stippled shadows.
+Use square pixels and four flat colors. Choose a subject that explains the page. A conversation can be drawn as messages, and boxes and arrows can show where data goes. Use periwinkle `#7D82FF` for the background, dark ink `#24223A` for outlines, lavender `#BABCFF` for shading, and near-white `#F5F4FF` for highlights.
 
 Add a header when a page has more than four prose paragraphs. Count quoted prose and skip headings, lists, tables, code, and image-only blocks.
 
 Draw on a 222 × 82 grid and export at 4× with nearest-neighbor scaling. Put the PNG under `public/images/docs/pixel/headers/` and include it as the first block in the page body. Use short alt text describing the subject. The same image and description appear in the Markdown edition.
 
-Edit the nine headers directly in the [native-size pixel sheet](art/headers/master.png) with a one-pixel pencil and the existing palette. The reel-to-reel recorder shows how to handle small details. Its microphone cable meets a jack, and the tape follows the guides across the head. Show motion where it helps explain the subject, as with the turning calendar page. Run `node art/headers/export.mjs` to regenerate the published PNGs.
+Light physical objects from the upper left. Keep the top and left edges bright and shade the undersides and right faces. Start a cast shadow where the object meets the surface and project it a short distance down and right. Keep diagrams flat. Show motion when it explains the action, as with the envelope passing between two hands.
+
+Edit the [native-size pixel sheet](art/headers/master.png) with a one-pixel pencil. The rows in `art/headers/export.mjs` map each tile to a page. Run `node art/headers/export.mjs` to regenerate the published PNGs.
 
 ## Agent access
 
