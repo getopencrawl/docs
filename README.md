@@ -5,7 +5,7 @@ Public product documentation at https://docs.getopencrawl.com, built with [Nimbu
 ## Edit
 
 Use Node.js 24 and npm. Run `npm ci`, then `npm run dev`.
-Add MDX pages to a section under `src/content/docs/`. The sidebar discovers pages within each section automatically. Set the top-level section order in `astro.config.ts` and link new sections from `src/content/docs/overview.mdx`.
+Add MDX pages under `src/content/docs/` and place each page's entry ID in `src/navigation.ts`. This sets the tabs, sidebar groups, and reading order independently of the page URLs. Update the reader's table of contents in `src/content/docs/overview.mdx` when adding a page.
 
 The logo, lavender palette, Funnel Display headings, Switzer body text, and Geist wordmark match https://getopencrawl.com. Brand overrides live in `src/styles/brand.css`; font files load from the brand domain. The surrounding layouts and components come from the official Nimbus empty starter, recorded in `nimbus.json`.
 
