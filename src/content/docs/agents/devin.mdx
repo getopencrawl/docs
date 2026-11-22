@@ -1,42 +1,28 @@
 ---
 title: Connect Devin Cloud
-description: Record new Devin sessions in OpenCrawl and give Devin access to workspace search, skills, and the CLI.
+description: Record Devin sessions in OpenCrawl and give Devin workspace search, skills, and the CLI.
 ---
 
-![A hosted Devin session connects to a searchable workspace transcript.](/images/docs/pixel/headers/devin-cloud.png)
+![A Devin session and its searchable transcript.](/images/docs/pixel/headers/devin-cloud.png)
 
 ## Record Devin sessions
 
-Connect your Devin organization once to make new sessions searchable in your OpenCrawl workspace. OpenCrawl reads them through Devin’s hosted APIs. You can keep using your stock blueprint.
+OpenCrawl records new sessions through Devin’s API. Your stock blueprint works as is.
 
-1. As a workspace admin, open [Integrations](https://app.getopencrawl.com/integrations) in OpenCrawl and select **Connect** on the Devin card.
-2. Follow **Service users in Devin**. Check that Devin shows the organization you want to record. Select **Provision service user**, give it a name, choose a role that can view organization sessions and read session events, and copy the generated token.
-3. Return to OpenCrawl, enter the key, review what workspace members will be able to search, and select **Connect and record**.
-4. Start a new Devin session and give it a task. When the Devin card shows **View indexed session**, open it to see the transcript. You can also search OpenCrawl for a phrase from the conversation.
+1. As a workspace admin, open [OpenCrawl Integrations](https://app.getopencrawl.com/integrations) and choose **Devin → Connect**.
+2. Follow **Service users in Devin** and choose **Provision service user**. Grant access to view organization sessions and read session events. Copy the token.
+3. Paste the token into OpenCrawl and select **Connect and record**. After starting a new session, choose **View indexed session** to see its transcript.
 
-**Connected** means OpenCrawl accepted the organization credential. **Recording new sessions** means you can open an indexed transcript. If recording falls behind, the card shows the delay and OpenCrawl retries automatically.
-
-Capture includes prompts, replies, available tool activity, shell commands and the output excerpts Devin supplies. To find a particular shell result, ask your agent to search the Devin session with tool outputs included.
-
-To stop recording, open **Integrations → Devin → Manage → Disconnect**. Previously indexed sessions stay in the workspace.
+To stop future recording, choose **Manage → Disconnect**.
 
 ## Use OpenCrawl tools inside Devin
 
-Install the plugin once if you want Devin to search your workspace, resume earlier work, or run the OpenCrawl CLI. It loads in fresh sessions at the scope you choose.
+1. In Devin, open **Customize → Plugins**. Choose **Myself** or your organization, then **Add plugin → From repository**.
+2. Enter `getopencrawl/opencrawl-plugins` as the repository and `plugins/devin` as the subdirectory.
+3. Once indexed, each member signs in under **Customize → MCPs → opencrawl** and starts a fresh session.
 
-1. Open **Customize → Plugins** in Devin. Choose **Myself** for a personal install or your organization for a team install. Team installs require **Manage plugins** permission.
-2. Choose **Add plugin → From repository**. Enter `getopencrawl/opencrawl-plugins` as the repository and `plugins/devin` as the subdirectory. Add the plugin.
-3. When indexing finishes, open **Customize → MCPs → opencrawl** and sign in. Each member connects their own OpenCrawl account.
-4. Start a new Devin session and describe your task. For an explicit lookup, ask Devin to use the `opencrawl` skill to find a phrase from a session you’ve shared. The plugin also provides `oc-continue` to resume earlier work and `oc-import-memories` to preview or import your own memories.
+<span id="get-suggestions-during-a-task"></span>
+On stock Ubuntu, the plugin automatically looks for relevant workspace history as you work. Devin can cite sources you have permission to read. The same install includes the OpenCrawl skills and CLI.
 
-## Get suggestions during a task
-
-On stock Ubuntu, the plugin can bring earlier workspace decisions into an ordinary engineering task. Start a new session after connecting MCP and describe the work in your own words. On a relevant turn, Devin sends a short topic to OpenCrawl using your member sign-in. A match comes back as an excerpt with a source that Devin can cite. Your workspace’s credit policy applies to checks. [Context suggestions](/search/context-suggestions/)
-
-On the opening request, Devin can check for suggestions as soon as the startup hook supplies its turn ID. Cloud starts that hook in the background, so the plugin can remind Devin once after a tool finishes on the same opening turn. Follow-ups use their own prompt hook. Checks are best effort. A check can return no matches, and a short turn can finish before a suggestion arrives.
-
-Ask Devin to turn off suggestions for the current session. To turn them off for future sessions at your install scope, open **Customize → Plugins → Plugin settings → Edit manifest**. Add `"env": {"OPENCRAWL_DEVIN_SUGGESTIONS": "off"}` to the existing OpenCrawl plugin entry and start a new session. The Devin integration in OpenCrawl controls organization recording separately.
-
-## Use the CLI
-
-Ask Devin to run `bin/opencrawl --version` from the installed plugin directory. On stock Ubuntu, the launcher downloads and verifies the matching CLI on first use. For account commands, ask Devin to run `bin/opencrawl login --no-browser` and approve the code in your browser. Check the workspace with `bin/opencrawl whoami`. A fresh VM can use your MCP sign-in while the CLI still needs its own login.
+<span id="use-the-cli"></span>
+For authenticated CLI commands, ask Devin to run `bin/opencrawl login --no-browser` from the plugin directory and approve the code.
