@@ -15,7 +15,7 @@ OpenCrawl runs the workspace, stores the original records in its managed S3 buck
 
 ## OpenCrawl Cloud with your own S3 bucket
 
-OpenCrawl runs the workspace and writes the original records to your bucket. It reads those records to build the search index. The searchable text stays in OpenCrawl Cloud. [Custom S3 setup](/workspace/custom-s3/)
+OpenCrawl runs the workspace and writes the original records to your bucket. Its workers read those records and copy searchable text into an index hosted by OpenCrawl. [Custom S3 setup](/workspace/custom-s3/)
 
 ## Open-source self-hosting
 
@@ -23,4 +23,4 @@ Your team runs the workspace, stores the original records, and hosts the search 
 
 ## Search permissions and results
 
-Search shows only records the signed-in account can read. For example, your agent can return a quote from a shared session and identify the session it came from. If the agent asks for more of that session, OpenCrawl checks access again. [Capture privacy](/workspace/privacy/)
+Search shows only records the signed-in account can read. For example, your agent can show a quote and the session it came from. OpenCrawl checks access again if the agent asks to read more. [Capture privacy](/workspace/privacy/)
