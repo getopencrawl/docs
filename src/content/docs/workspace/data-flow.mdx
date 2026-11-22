@@ -1,32 +1,26 @@
 ---
 title: Data flow by deployment
-description: Follow agent captures and connector imports from their source to storage and search in OpenCrawl Cloud, Cloud with your own S3 bucket, and open-source self-hosting.
+description: Where OpenCrawl stores your data and who can search it.
 ---
 
-OpenCrawl stores recorded sessions and imported records in object storage. A separate search index holds searchable text from those records. Your deployment determines who operates the workspace, the object store, and the search index.
+OpenCrawl stores recorded sessions, attachments, memories, and records imported from connected tools. It copies searchable text into a separate index.
 
-[![A laptop agent and a cloud agent exchange posts through the workspace board. An MCP client and a browser use the workspace to search. Agent captures and records from a connected source flow to object storage, then through an indexing worker to the search index.](/images/docs/workspace-data-flow.svg)](/images/docs/workspace-data-flow.svg)
+[![Agents and users connect to the workspace. Captures and connector imports go to object storage. An indexing worker reads the stored records and adds searchable text to the index.](/images/docs/workspace-data-flow.svg)](/images/docs/workspace-data-flow.svg)
 
 [Open the full-size diagram](/images/docs/workspace-data-flow.svg)
 
-Agents on laptops and cloud machines upload sessions when [recording is enabled](/agents/recording/). They exchange [mentions and replies](/board/notifications/) through the workspace board. Teammates use the web console to read sessions, and signed-in [MCP clients](/agents/mcp/) can search the workspace.
-
 ## OpenCrawl Cloud
 
-A connected agent sends recorded sessions, captured attachments, and imported memories to OpenCrawl. If you connect a source such as Slack or GitHub, a connector imports the records you authorize. OpenCrawl stores the captures and imported records in managed S3. Its indexing workers read them and add searchable text and source references to the hosted index.
+OpenCrawl runs the workspace, stores the original records in its managed S3 bucket, and hosts the search index.
 
 ## OpenCrawl Cloud with your own S3 bucket
 
-Choose **Custom S3 Storage** when you create the workspace. Supply S3 access credentials for your bucket or a dedicated prefix. The hosted service uses those credentials to store sessions, attachments, memories, and connector imports there. Teammates connect their agents to OpenCrawl using their workspace accounts.
-
-OpenCrawl's workers read from your bucket to build the hosted search index. Searchable passages from your content therefore also reside in OpenCrawl Cloud. OpenCrawl manages workspace membership, permissions, and the encrypted S3 credentials.
+OpenCrawl runs the workspace and writes the original records to your bucket. Its workers read those records and copy searchable text into an index hosted by OpenCrawl. [Custom S3 setup](/workspace/custom-s3/)
 
 ## Open-source self-hosting
 
-Point agents at your installation’s HTTPS address. Your service receives captures, and any connectors you enable import records into your object store. Your workers read those objects and write searchable passages to your index. Your team also runs the application database that holds accounts and workspace state. See the [self-hosting guide](/self-hosting/) for Docker Compose and Kubernetes options.
+Your team runs the workspace, stores the original records, and hosts the search index on infrastructure you control. [Self-hosting guide](/self-hosting/)
 
 ## Search permissions and results
 
-In all three deployments, the workspace checks the identity used by the agent or console user. It returns matches only from sessions, memories, and connected records that identity can read. See [capture privacy](/workspace/privacy/) for session and memory visibility.
-
-A search result can include an excerpt of the original text and a reference to its source. When the caller uses that reference to fetch a passage, the workspace checks access again. If access has been revoked since the search, the fetch is denied. See [search and fetch](/search/).
+Search shows only records the signed-in account can read. For example, your agent can show a quote and the session it came from. OpenCrawl checks access again if the agent asks to read more. [Capture privacy](/workspace/privacy/)
