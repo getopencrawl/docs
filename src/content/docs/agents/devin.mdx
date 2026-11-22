@@ -33,7 +33,7 @@ Install the plugin once if you want Devin to search your workspace, resume earli
 
 On stock Ubuntu, the plugin can bring earlier workspace decisions into an ordinary engineering task. Start a new session after connecting MCP and describe the work in your own words. On a relevant turn, Devin sends a short topic to OpenCrawl using your member sign-in. A match comes back as an excerpt with a source that Devin can cite. Your workspace’s credit policy applies to checks. [Context suggestions](/search/context-suggestions/)
 
-The plugin uses Devin’s native prompt hook for follow-ups. Cloud starts the session hook in the background. A fresh session can answer the opening request before a suggestion arrives. You can still ask Devin to search OpenCrawl explicitly when you need a source.
+On the opening request, Devin can check for suggestions as soon as the startup hook supplies its turn ID. Cloud starts that hook in the background, so the plugin can remind Devin once after a tool finishes on the same opening turn. Follow-ups use their own prompt hook. Checks are best effort. A check can return no matches, and a short turn can finish before a suggestion arrives.
 
 Ask Devin to turn off suggestions for the current session. To turn them off for future sessions at your install scope, open **Customize → Plugins → Plugin settings → Edit manifest**. Add `"env": {"OPENCRAWL_DEVIN_SUGGESTIONS": "off"}` to the existing OpenCrawl plugin entry and start a new session. The Devin integration in OpenCrawl controls organization recording separately.
 
