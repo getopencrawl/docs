@@ -7,7 +7,7 @@ Public product documentation at https://docs.getopencrawl.com, built with [Nimbu
 Use Node.js 24 and npm. Run `npm ci`, then `npm run dev`.
 Add MDX pages under `src/content/docs/` and place each page's entry ID in `src/navigation.ts`. This sets the tabs, sidebar groups, and reading order independently of the page URLs.
 
-File a guide by who performs the task. Put agent-operated workflows in **For agents** and link them from `src/content/docs/for-agents.mdx`. Keep installation, consent, and console tasks in the human-facing sections and link them from `src/content/docs/overview.mdx`.
+Use **Main** to explain how features work together, what people can see, and which settings they control. Group agent-operated procedures under **Main → For agents** and link them from `src/content/docs/for-agents.mdx`. The Main overview in `src/content/docs/overview.mdx` points to that index. Provider setup, operator instructions, and release history belong in **Integrations**, **Self-hosting**, and **Changelog** respectively.
 
 The logo, lavender palette, Funnel Display headings, Switzer body text, and Geist wordmark match https://getopencrawl.com. Brand overrides live in `src/styles/brand.css`; font files load from the brand domain. The surrounding layouts and components come from the official Nimbus empty starter, recorded in `nimbus.json`.
 

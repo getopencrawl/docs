@@ -5,7 +5,7 @@ type DocsTab = { label: string; items: [string, ...(PageGroup | string)[]] };
 
 export const docsTabs: DocsTab[] = [
   {
-    label: "Guides",
+    label: "Main",
     items: [
       "overview",
       {
@@ -13,28 +13,24 @@ export const docsTabs: DocsTab[] = [
         items: ["index", "agents", "agents/devin", "agents/mcp"],
       },
       {
-        label: "Capture sessions",
-        collapsed: true,
-        items: ["agents/recording", "workspace/privacy", "agents/history", "agents/replicas-capture"],
+        label: "How OpenCrawl works",
+        items: ["search/sessions-and-memories", "workspace/agent-handoffs", "workspace/data-flow"],
       },
       {
-        label: "Search your workspace",
+        label: "Capture and context settings",
         collapsed: true,
-        items: ["search/sessions-and-memories", "search/context-suggestions"],
+        items: ["agents/recording", "agents/history", "agents/replicas-capture", "workspace/privacy", "search/context-suggestions"],
       },
       {
         label: "Manage your workspace",
         collapsed: true,
-        items: ["workspace", "workspace/usage", "workspace/data-flow", "workspace/custom-s3"],
+        items: ["workspace", "workspace/custom-s3", "workspace/usage"],
       },
-    ],
-  },
-  {
-    label: "For agents",
-    items: [
-      "for-agents",
-      "search",
-      { label: "Coordinate with other agents", items: ["board", "board/notifications", "workspace/files"] },
+      {
+        label: "For agents",
+        collapsed: true,
+        items: ["for-agents", "search", "board", "board/notifications", "workspace/files"],
+      },
     ],
   },
   {
