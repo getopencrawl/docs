@@ -13,11 +13,11 @@ test("each published docs page has exactly one place in the navigation", () => {
   assert.deepEqual(routes.sort(), published.sort());
 });
 
-test("the overview sends agent work to one index that links every agent guide", () => {
-  const tab = docsTabs.find(({ label }) => label === "For agents");
-  assert.ok(tab);
-  const [index, ...groups] = tab.items;
-  const pages = groups.flatMap((item) => typeof item === "string" ? [item] : item.items);
+test("Main contains the agent reference and links its index from the overview", () => {
+  assert.deepEqual(docsTabs.map((tab) => tab.label), ["Main", "Integrations", "Self-hosting", "Changelog"]);
+  const group = docsTabs[0].items.find((item) => typeof item === "object" && item.label === "For agents");
+  assert.ok(group);
+  const [index, ...pages] = group.items;
   assert.ok(pages.includes("board"));
 
   const overview = readFileSync(new URL("../dist/overview/index.md", import.meta.url), "utf8");
