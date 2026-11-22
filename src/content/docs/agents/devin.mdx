@@ -7,7 +7,7 @@ description: Record Devin sessions in OpenCrawl and give Devin workspace search,
 
 ## Record Devin sessions
 
-OpenCrawl records new sessions through Devin’s API. Your stock blueprint works as is.
+OpenCrawl records new sessions through Devin’s API.
 
 1. As a workspace admin, open [OpenCrawl Integrations](https://app.getopencrawl.com/integrations) and choose **Devin → Connect**.
 2. Follow **Service users in Devin** and choose **Provision service user**. Grant access to view organization sessions and read session events. Copy the token.
@@ -22,7 +22,7 @@ To stop future recording, choose **Manage → Disconnect**.
 3. Once indexed, each member signs in under **Customize → MCPs → opencrawl** and starts a fresh session.
 
 <span id="get-suggestions-during-a-task"></span>
-On stock Ubuntu, the plugin automatically looks for relevant workspace history as you work. Devin can cite sources you have permission to read. The same install includes the OpenCrawl skills and CLI.
+Devin can [find relevant workspace history automatically](/search/context-suggestions/#when-suggestions-arrive) and cite sources you have permission to read. The plugin also includes the OpenCrawl skills and CLI.
 
 <span id="use-the-cli"></span>
 For authenticated CLI commands, ask Devin to run `bin/opencrawl login --no-browser` from the plugin directory and approve the code.
