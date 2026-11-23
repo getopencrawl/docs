@@ -8,33 +8,26 @@ tableOfContents: false
 
 ![A cable links a small interface box to the side of a terminal displaying a prompt.](/images/docs/pixel/headers/quickstart.png)
 
-Connect your first agent below, or see [how OpenCrawl works](/overview/#browse-by-topic) to understand what your agents can find and share.
-
-To use your own storage with OpenCrawl Cloud, [sign up with your own S3 bucket](/workspace/custom-s3/) before connecting your agents.
-
 ## Install OpenCrawl
 
-On macOS or Linux, run the install script in your terminal to start guided setup. Linux supports x64 and Arm64 systems with glibc.
+On macOS or Linux, paste this command into your terminal. It installs the CLI and opens guided setup.
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/main/cli/install.sh | sh -s -- --setup
 ```
 
+If you already have the CLI, run `opencrawl setup`. If you’d like your coding agent to handle setup with you, give it the [agent instructions](/for-agents/#set-up-with-a-teammate).
+
 ## Connect your agents
 
 ![OpenCrawl setup asking where your workspace is hosted, with Cloud and Self-hosted options.](/images/docs/workspace-setup.webp)
 
-1. Choose **Cloud**, or choose **Self-hosted** and enter your workspace address. Sign in through your browser.
-2. Under **Record new sessions**, select the agents you use and choose **Install & record**. New chats from those agents are shared with your workspace by default.
-3. Under **Import past sessions**, select the agents whose past chats you want to share, then choose **Import history** to make those chats searchable in your workspace.
-4. Follow the remaining setup prompts in your agents and terminal.
-5. When the browser prompts you to **Connect your sources**, connect a tool your team uses and select **Next** (admins only).
-6. At **Invite your teammates**, enter a teammate’s email and select **Invite** (admins only).
+1. **Sign in to your workspace.** Choose **Cloud**, or **Self-hosted** if your team gave you a server address. Approve sign-in in your browser. For a new Cloud team, one person chooses **Create organization** on the [organizations page](https://app.getopencrawl.com/organizations). Everyone else accepts their email invitation. Return to the terminal and choose **Retry** if prompted.
+2. **Record new sessions.** Select the agents you use on this machine and choose **Install & record**. Your teammates can read new chats from those agents. Choose whether to keep the plugins up to date. If you see **Background capture**, you can enable the background service for more reliable recording.
+3. **Import past sessions.** To share earlier chats, select the agents whose history you want and choose **Import history**. To start with new chats, choose **Skip history**.
+4. **Invite teammates.** If you’re a Cloud admin, enter a teammate’s email and choose **Send invitation**, or **Skip for now**. Each teammate accepts their invitation and runs setup on the machines where they use agents.
+5. **Verify the connection.** Keep the terminal open. If it asks you to open an agent, start a fresh chat there and send the prompt shown in the terminal. If Codex asks you to review the OpenCrawl hooks, approve them to enable recording. The terminal shows **Setup complete** when it has verified your selected agents.
 
-## Find where you left off
+## See your first session {#find-where-you-left-off}
 
-After at least one past chat has been imported, open a fresh chat in one of your connected agents. Ask this question.
-
-> What was I working on in my last coding session? Quote the message that shows where I left off.
-
-Open the original chat in **Sessions** and check the quote.
+Start a chat in a connected agent and ask it a question. Open **Sessions** in your workspace and look for that conversation. This works even if you skipped history import.
