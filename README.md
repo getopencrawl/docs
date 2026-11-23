@@ -11,6 +11,10 @@ Use **Main** to explain how features work together, what people can see, and whi
 
 The logo, lavender palette, Funnel Display headings, Switzer body text, and Geist wordmark match https://getopencrawl.com. Brand overrides live in `src/styles/brand.css`; font files load from the brand domain. The surrounding layouts and components come from the official Nimbus empty starter, recorded in `nimbus.json`.
 
+### Link previews
+
+Each published page gets a WebP poster, an 18-second MP4, and a looping GIF. Astro renders the title and optional description from frontmatter over the shared artwork in `art/share/`. Editing the metadata or artwork changes the media URL on the next deployment. Cloudflare serves the files under `/share/` with a one-year immutable cache lifetime. Linux builds use bundled Chromium. On macOS the renderer uses Google Chrome or the executable set in `PUPPETEER_EXECUTABLE_PATH`.
+
 ### Documentation illustrations
 
 Use square pixels and four flat colors. Choose a subject that explains the page. A conversation can be drawn as messages, and boxes and arrows can show where data goes. Use periwinkle `#7D82FF` for the background, dark ink `#24223A` for outlines, lavender `#BABCFF` for shading, and near-white `#F5F4FF` for highlights.
