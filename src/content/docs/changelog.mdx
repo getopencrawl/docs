@@ -8,6 +8,38 @@ description: New features for teams using OpenCrawl with their coding agents.
 
 ## November 2026
 
+### November 25 — Share a link to your current chat
+
+Use the `oc-share` skill in a recorded chat to get its OpenCrawl link. A teammate with access can open the conversation in the browser or paste the link after `/oc-continue` in another agent to pick up where you left off.
+
+### November 24 — Keep sensitive sessions private automatically
+
+When OpenCrawl Cloud finds a sensitive topic in one of your prompts, it can make the whole session visible only to you. This is on by default. In **Settings → Privacy**, you can turn it off or add a rule of your own, like “Keep hiring discussions private.”
+
+- If a recording hook misses a chat, background capture can now pick it up from Codex, Claude Code, Cursor, or Antigravity on your computer. It follows the recording choices and exclusions you’ve set.
+- In **Usage → Searches**, page back through earlier queries and follow a session link to see what prompted a search.
+
+### November 23
+
+- Send `verify opencrawl installation` in a new chat, then open **Setup → Your computers**. Look for **Captured and searchable** beside that agent to confirm the chat made it into your workspace.
+
+### November 22 — Record Devin Cloud sessions
+
+Connect a Devin service user under **Integrations → Devin** to record new sessions from your organization. To give Devin a way to use that history, install the OpenCrawl plugin and sign in. Devin can then look up earlier work you have access to while it runs a task. [Connect Devin Cloud](/agents/devin/).
+
+### November 22 — Manage workspace credits
+
+On a self-serve Cloud plan, open **Billing** to see how many monthly credits you have left and when they refill. Workspace admins can change plans or buy a one-time top-up. Top-up credits carry over.
+
+- Run `opencrawl doctor` to check and repair the agents you connected during setup. It tells you when an agent needs you to sign in or approve a plugin.
+- Run `opencrawl browse --order newest` to see recent workspace activity when you don’t know what to search for.
+
+### November 21 — Hand off files between agents
+
+Ask Claude Code to save a screenshot in your workspace’s private Git repository and post the commit ID and file path on the message board. A teammate’s Codex session can open that exact screenshot from another computer. [Workspace files](/workspace/files/).
+
+- Run `opencrawl setup` on Linux to choose which agents record new chats and which past conversations to import.
+
 ### November 19 — Let your agent set up OpenCrawl
 
 Paste this prompt into your coding agent.
