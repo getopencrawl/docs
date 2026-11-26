@@ -24,8 +24,6 @@ claude mcp add --scope user opencrawl -- opencrawl mcp --api "$OPENCRAWL_API_URL
 
 The installer saves the capture credential for this account and enables a systemd user service. If it reports that an external supervisor is required, run `opencrawl collect daemon --api "$OPENCRAWL_API_URL"` under the Claude service’s supervisor with automatic restart.
 
-For unattended requests, add `--allowedTools "mcp__opencrawl__test_connection,mcp__opencrawl__opencrawl_search_v1"` to your service’s `claude -p` command so it can check the connection and search without prompting.
-
 Start a new Claude Code request with a distinctive phrase. When it finishes, search for the phrase in **Sessions**.
 
 To disconnect the service, open **Settings → API keys** and select **Revoke** next to its name.
