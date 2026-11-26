@@ -1,6 +1,6 @@
 ---
 title: Set up OpenCrawl agents in Replicas
-description: Give Claude Code and Codex the OpenCrawl CLI, skill, and MCP connection in a shared Replicas environment.
+description: Install the OpenCrawl CLI, skills, MCP, and proactive search hooks for Claude Code and Codex in a Replicas environment.
 ---
 
 ![A prompt and its reply in a shared Replicas session.](/images/docs/pixel/headers/replicas-agents.png)
@@ -31,14 +31,29 @@ unset token code
 
 Continue after the server confirms enrollment in the intended OpenCrawl workspace. Stop on a conflict or an unexpected destination. Future workspaces in the same Replicas organization use their own identities.
 
-## Install the CLI and skill
+## Configure the Replicas environment
 
-1. In the intended Replicas environment’s persistent configuration, set `OPENCRAWL_API_URL` to the approved server origin and `OPENCRAWL_AUTH` to `replicas-workspace`. Use Replicas workspace identity for CLI and MCP access. Keep human tokens and the organization API key out of this configuration.
-2. During environment preparation, install the CLI with `npm install -g @getopencrawl/cli`, or reuse a working installation. Verify `opencrawl --version`. Preserve the environment’s existing startup commands and unrelated settings.
-3. Install the skill for each harness you use with `opencrawl skills install --client claude-code` or `opencrawl skills install --client codex`. Read the result for any harness approval the workspace owner needs to complete.
+Use the built-in Replicas controls in the chat where the admin pasted the prompt. Target the environment that workspace uses. Propose each missing change and have the environment owner approve it above the chat. Replicas applies approved settings to future workspaces in the environment. [Environment access](https://docs.replicas.dev/features/environments#environment-access)
 
-## Connect MCP and verify
+1. Set the environment variables `OPENCRAWL_API_URL` to the approved OpenCrawl origin and `OPENCRAWL_AUTH` to `replicas-workspace`. The official CLI command is `replicas env vars set <environment> <key> <value>`.
+2. Add one HTTP MCP server named `opencrawl` at the approved origin plus `/mcp`. Set `config.auth` to `{"type":"workspace_identity","audience":"OPENCRAWL_SERVER_FROM_PROMPT"}`, replacing the placeholder with the exact origin. Leave headers empty. Use the Replicas environment MCP create or update operation if available in the chat. Reuse an existing matching server. If the chat only has the Replicas CLI, use the command below after the image is ready. [Environment MCP API](https://docs.replicas.dev/api-reference/environment-mcps/create-environment-mcp)
+3. Download the [OpenCrawl warm hook](https://docs.getopencrawl.com/replicas-agent-tools-warm.sh) to a temporary file. Inspect the selected environment’s own warm hook with `replicas env warm-hooks get <environment>` and its inherited setup. Add the downloaded block once, after the shell shebang and before any early exit, preserving existing commands. Submit the combined script with `replicas env warm-hooks save-test <environment> --file <combined-script>`. Report a conflict for review if an existing installation already manages OpenCrawl hooks or the environment disables them.
+4. Wait for the environment build to show **Ready**. If it shows **Needs attention**, inspect its build output and retry the failed step. The warm hook installs the CLI, skills, and released `SessionStart`, `UserPromptSubmit`, and `PreToolUse` handlers. The Codex handlers live in the administrator-managed image policy. Each workspace obtains its own short-lived identity at runtime. [Environment builds](https://docs.replicas.dev/features/environments)
 
-In the Replicas environment’s MCP settings, add **OpenCrawl** with the approved server origin followed by `/mcp`. Choose `workspace_identity` authentication and use the server origin as the audience. Replicas supplies a fresh signed token for the workspace.
+### Add MCP from a CLI-only chat
 
-Start a new workspace in that environment. Run `opencrawl whoami --json` and confirm the expected OpenCrawl workspace. In a fresh chat, verify that the OpenCrawl skill is available and that the MCP tool `test_connection` succeeds.
+The Replicas CLI can register OpenCrawl’s native stdio client as an environment MCP. The client forwards the same tools to the approved server and obtains a fresh workspace identity for authentication. Run this once if the environment still needs an MCP. Substitute the selected environment and the exact server origin from the prompt. Approve the change above the chat.
+
+```sh
+replicas env mcps add 'REPLICAS_ENVIRONMENT' opencrawl --command opencrawl \
+  --arg mcp --arg=--api --arg 'OPENCRAWL_SERVER_FROM_PROMPT' \
+  --env OPENCRAWL_AUTH=replicas-workspace --env 'OPENCRAWL_API_URL=OPENCRAWL_SERVER_FROM_PROMPT'
+```
+
+## Verify in new chats
+
+Start a **new workspace** from the ready image. Run `opencrawl whoami --json` and check the OpenCrawl workspace. Open a fresh Claude Code chat and a fresh Codex chat. For each one:
+
+1. Confirm the OpenCrawl skill is available. Call the OpenCrawl MCP tools `test_connection` and `opencrawl_search_v1` for a known earlier team discussion. Check the returned source.
+2. Send an ordinary question about that earlier discussion. A successful proactive check supplies relevant prior context on prompt submission, before the agent calls search. Look for the native hook output or a suggestion task for **this chat** with `status: "delivered"` and a `checkId` under the workspace user’s `~/.config/opencrawl/plugin-state/*/suggestions/tasks/`. A prompt with no relevant history can legitimately yield no suggestion. Retry with a known relevant question.
+3. Report CLI identity, MCP search, skill availability, and proactive delivery separately for each harness. If an approval, image build, or fresh-chat check is outstanding, say which one.

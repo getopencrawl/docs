@@ -30,3 +30,17 @@ test('the documented enrollment sends the code and signed identity only to the s
   assert.equal(stdout,'{"ok":true}');
   assert.equal(stderr,'');
 });
+
+test('Replicas agent setup uses a pinned image installer and checks proactive delivery in both harnesses', async () => {
+  const [guide, warm] = await Promise.all([
+    readFile(new URL('../src/content/docs/agents/replicas.mdx', import.meta.url),'utf8'),
+    readFile(new URL('../public/replicas-agent-tools-warm.sh', import.meta.url),'utf8'),
+  ]);
+  assert.match(guide,/replicas-agent-tools-warm\.sh/);
+  assert.match(guide,/UserPromptSubmit/);
+  assert.match(guide,/status: "delivered"/);
+  assert.match(guide,/fresh Claude Code chat and a fresh Codex chat/);
+  assert.match(warm,/opencrawl-core\/[a-f0-9]{40}\/deploy\/replicas\/agent-tools\.mjs/);
+  assert.match(warm,/[a-f0-9]{64} agent-tools\.mjs \| \/usr\/bin\/sha256sum --check/);
+  assert.doesNotMatch(warm,/identity token|api\/replicas\/connect|collect install/);
+});
