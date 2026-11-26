@@ -13,6 +13,8 @@ When someone asks you to connect their machine to a team workspace, use their Op
 2. Run `opencrawl setup --json` to preview the detected agents and recording choices. Ask which agents should share new chats and whether any past chats should be imported. If their choices differ from the preview, generate a new plan with the chosen `--plugins`, `--forward`, and `--history` values. Run the returned `applyCommand` once they approve that plan.
 3. Run `opencrawl setup next --json` and follow the next action for each selected agent. Ask the person to complete any native sign-in or hook approval. Check `opencrawl setup status --json` to see which agents have verified a fresh session and whether a history import is still running.
 
+In a shared Replicas environment, use the [Replicas agent setup guide](/agents/replicas-capture/) with the workspace admin’s setup prompt.
+
 ## Find and share work
 
 - **Find a prior decision.** [Search and fetch](/search/) a passage from a session, memory, or connected source. Read the surrounding messages before citing the decision.

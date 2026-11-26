@@ -1,10 +1,10 @@
 ---
 title: Replicas
-description: Import retained agent chats from a Replicas organization.
+description: Sync conversations with a Replicas organization API key and give agents access to OpenCrawl.
 ---
 
-In Replicas, enable **Team workspace visibility** and create an organization API key. An OpenCrawl admin can enter that key under **Integrations → Replicas** to import the organization’s retained history, including tool calls and results.
+In Replicas, create an organization API key. An OpenCrawl admin enters it under **Integrations → Replicas → Connect**. OpenCrawl imports retained conversations, including tool calls and results, and periodically checks for new or updated chats. You can close the browser while the sync runs. Read imported conversations in **Sessions**.
 
-You can close the browser while the import runs. Read imported conversations in **Sessions**.
+Where live capture is enabled for the organization, the server also uses that key to stream new events from active workspaces. This runs independently of agent setup.
 
-To record future Claude Code and Codex chats, follow [Record new Replicas chats](/agents/replicas-capture/). You can set up recording independently of the history import.
+To give Claude Code or Codex access to team tools, copy the agent setup prompt from the same dialog into a Replicas chat. Follow [Set up OpenCrawl agents in Replicas](/agents/replicas-capture/).
