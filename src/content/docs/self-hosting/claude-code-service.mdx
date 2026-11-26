@@ -5,7 +5,7 @@ description: Record headless Claude Code sessions and search them from the servi
 
 In your self-hosted workspace, open **Settings → Machine keys**, name the service, select **Create key**, and copy the key into your secret store.
 
-On the host that runs Claude Code, give the Claude service and its capture daemon the same OS user, home directory, and environment:
+On the Claude Code host, set these variables for the service account and its setup shell:
 
 | Variable | Value |
 | --- | --- |
@@ -22,6 +22,6 @@ opencrawl collect install --yes --harness claude-code --daemon --backfill skip
 claude mcp add --scope user opencrawl -- opencrawl mcp --api "$OPENCRAWL_API_URL"
 ```
 
-On Linux the installer enables a systemd user service. Supply its environment from the same secret store at startup. If the host uses another supervisor, have it run `opencrawl collect daemon --api "$OPENCRAWL_API_URL"` with automatic restart.
+The installer saves the capture credential for this account and enables a systemd user service. If it reports that an external supervisor is required, run `opencrawl collect daemon --api "$OPENCRAWL_API_URL"` under the Claude service’s supervisor with automatic restart.
 
 Start a new Claude Code request with a distinctive phrase. When it finishes, search for the phrase in **Sessions**.
