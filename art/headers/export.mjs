@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 // Tiles in the editable sheet, left to right and top to bottom.
 const rows = [
-  ['quickstart', 'overview', 'replicas-capture'],
+  ['quickstart', 'overview', 'replicas-agents'],
   ['changelog', 'context-suggestions', 'sessions-memories'],
   ['kubernetes', 'agent-handoffs', 'data-flow'],
   ['devin-cloud'],

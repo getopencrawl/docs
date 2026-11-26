@@ -19,3 +19,8 @@
 /self-hosting/backups/ /self-hosting/ 301
 /self-hosting/backups/index.md /self-hosting/index.md 301
 /self-hosting/backups/index.mdx /self-hosting/index.mdx 301
+
+/agents/replicas-capture/ /agents/replicas/ 301
+/agents/replicas-capture/index.md /agents/replicas/index.md 301
+/agents/replicas-capture/index.mdx /agents/replicas/index.mdx 301
+/images/docs/pixel/headers/replicas-capture.png /images/docs/pixel/headers/replicas-agents.png 301

@@ -3,13 +3,13 @@ title: Set up OpenCrawl agents in Replicas
 description: Give Claude Code and Codex the OpenCrawl CLI, skill, and MCP connection in a shared Replicas environment.
 ---
 
-![A prompt and its reply in a shared Replicas session.](/images/docs/pixel/headers/replicas-capture.png)
+![A prompt and its reply in a shared Replicas session.](/images/docs/pixel/headers/replicas-agents.png)
 
 ## Copy the agent setup prompt
 
-In OpenCrawl **Integrations**, choose **Connect** on the Replicas card. If history is already connected, choose **Set up agents**. Copy the snippet and paste it into a chat in the intended Replicas organization and team environment. It includes your OpenCrawl server and a one-time admin approval code, valid for 30 minutes.
+In OpenCrawl **Integrations**, choose **Connect** on the Replicas card. If Replicas is already connected, choose **Set up agents**. Copy the snippet and paste it into a chat in the intended Replicas organization and team environment. It includes your OpenCrawl server and a one-time admin approval code, valid for 30 minutes.
 
-The organization API key belongs in the **Connect** dialog. OpenCrawl uses it to [sync Replicas conversations](/integrations/replicas/). Agent setup gives workspaces in the approved Replicas organization access to team tools using their signed workspace identities.
+Agent setup gives workspaces in the approved Replicas organization access to team tools using their signed workspace identities.
 
 ## Enroll the organization
 
@@ -41,4 +41,4 @@ Continue after the server confirms enrollment in the intended OpenCrawl workspac
 
 In the Replicas environment’s MCP settings, add **OpenCrawl** with the approved server origin followed by `/mcp`. Choose `workspace_identity` authentication and use the server origin as the audience. Replicas supplies a fresh signed token for the workspace.
 
-Start a new workspace in that environment. Run `opencrawl whoami --json` and confirm the expected OpenCrawl workspace. In a fresh chat, verify that the OpenCrawl skill is available and that the MCP tool `test_connection` succeeds. Preserve any existing recording configuration. Setting up these agent tools does not require installing a local session recorder.
+Start a new workspace in that environment. Run `opencrawl whoami --json` and confirm the expected OpenCrawl workspace. In a fresh chat, verify that the OpenCrawl skill is available and that the MCP tool `test_connection` succeeds.

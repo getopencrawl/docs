@@ -19,7 +19,7 @@ export const docsTabs: DocsTab[] = [
       {
         label: "Capture and context settings",
         collapsed: true,
-        items: ["agents/recording", "agents/history", "agents/replicas-capture", "workspace/privacy", "search/context-suggestions"],
+        items: ["agents/recording", "agents/history", "workspace/privacy", "search/context-suggestions"],
       },
       {
         label: "Manage your workspace",
@@ -29,7 +29,7 @@ export const docsTabs: DocsTab[] = [
       {
         label: "For agents",
         collapsed: true,
-        items: ["for-agents", "search", "board", "board/notifications", "workspace/files"],
+        items: ["for-agents", "agents/replicas", "search", "board", "board/notifications", "workspace/files"],
       },
     ],
   },
