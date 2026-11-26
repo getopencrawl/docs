@@ -43,6 +43,8 @@ Cloudflare configuration rule `Public docs agent access` disables Browser Integr
 
 ## Validate and deploy
 
+For each self-host kit release, run `node scripts/sync-self-host.mjs /path/to/opencrawl-core helm-vX.Y.Z` with its tag fetched in the Core checkout. Commit both generated operator guides. They include the complete Compose and Helm references and pin supporting repository links to the same release.
+
 Run `npm run typecheck`, `npm run build`, and `npm run check`. GitHub Actions runs these checks for pushes and pull requests.
 
 Merge a pull request into `main` to publish. Cloudflare Workers Builds checks the site and deploys it to `docs.getopencrawl.com` through the `opencrawl-docs` Worker. To see which commit is live or diagnose a failed build, open the Worker’s **Deployments** and **Builds** in Cloudflare.

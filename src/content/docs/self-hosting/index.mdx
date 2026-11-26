@@ -8,8 +8,13 @@ sidebar:
 
 Use [Docker Compose](/self-hosting/docker-compose/) for a single Docker host or the versioned [Helm kit](/self-hosting/kubernetes/) for Kubernetes. Both run a single application instance with local workspace accounts. During alpha, use a fresh installation for a new version.
 
+## Full operator guides
+
+- [Self-hosting operator guide](/self-hosting/operator-guide/) covers the complete Compose installation, account and agent onboarding, proxy and storage settings, external sources, recovery, and backups.
+- [Kubernetes operator guide](/self-hosting/helm-operator-guide/) covers the complete Helm installation, bundled or external services, first-admin setup, credential configuration, conformance checks, and retirement.
+
 To compare what your team operates with each option, see [data flow by deployment](/workspace/data-flow/).
 
-Once the workspace is reachable, run `opencrawl setup`, select **Self-hosted**, and enter its HTTPS address.
+Once the workspace is reachable, teammates can run `opencrawl setup`, select **Self-hosted**, and enter its HTTPS address. For an unattended Claude Code harness, [create a machine API key](/self-hosting/machine-keys/) so it can capture sessions, search, and use the board under its own identity.
 
 For ongoing Compose operations, see [external sources](/self-hosting/external-sources/) and [backup and recovery](/self-hosting/backups/).

@@ -9,6 +9,8 @@ sidebar:
 
 ## Get the release kit
 
+Use the [full Kubernetes operator guide](/self-hosting/helm-operator-guide/) for the configuration reference, rollout sequence, conformance tests, and recovery instructions.
+
 Download and unpack the `opencrawl-selfhost-<version>.tgz` kit from a stable [Helm release](https://github.com/getopencrawl/opencrawl-core/releases?q=helm-v&expanded=true). It includes the charts and pins the runtime image. Use Node.js 24 or later, Helm 3, and kubectl.
 
 Choose a cluster with a default dynamic StorageClass and a CNI that enforces NetworkPolicy. Use a dedicated namespace. For remote access, configure DNS and HTTPS ingress for your workspace URL.
@@ -33,4 +35,4 @@ Retrieve `OPENCRAWL_SETUP_TOKEN` from the `<release>-runtime-credentials` Secret
 
 ## Choose services
 
-The kit bundles PostgreSQL, OpenSearch, Temporal, S3-compatible storage and Airbyte. For capture without connected sources, set `airbyte.mode` to `disabled` in your config. To use services you already operate, start with the kit’s mixed or external examples and create their referenced Secrets in the installation namespace.
+The kit bundles PostgreSQL, OpenSearch, Temporal, S3-compatible storage and Airbyte. For capture without connected sources, set `airbyte.mode` to `disabled` in your config. To enroll unattended agents, follow [Machine API keys](/self-hosting/machine-keys/). To use services you already operate, start with the kit’s mixed or external examples and create their referenced Secrets in the installation namespace.
