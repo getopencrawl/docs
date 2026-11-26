@@ -51,15 +51,7 @@ export const docsTabs: DocsTab[] = [
       },
     ],
   },
-  {
-    label: "Self-hosting",
-    items: [
-      "self-hosting",
-      { label: "Install", items: ["self-hosting/docker-compose", "self-hosting/kubernetes", "self-hosting/machine-keys"] },
-      { label: "Full operator guides", items: ["self-hosting/operator-guide", "self-hosting/helm-operator-guide"] },
-      { label: "Operate Docker Compose", items: ["self-hosting/external-sources", "self-hosting/backups"] },
-    ],
-  },
+  { label: "Self-hosting", items: ["self-hosting"] },
   { label: "Changelog", items: ["changelog"] },
 ];
 
