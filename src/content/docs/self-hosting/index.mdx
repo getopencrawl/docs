@@ -1,11 +1,28 @@
 ---
 title: Self-host OpenCrawl
-description: Install OpenCrawl on one Linux host and return the first administrator login.
+description: Install a workspace on one Linux host with Docker Compose and get a verified administrator login.
 ---
 
-This single-host install uses Docker Compose and SQLite FTS5 for search. OpenSearch and Airbyte are off. The `helm-v0.3.7` tag pins the OpenCrawl release for both Compose and Helm.
+This guide brings up a workspace on one Linux host using Docker Compose. An agent can complete the installation in one turn. For a Kubernetes deployment, use the [Helm self-host kit](https://github.com/getopencrawl/opencrawl-core/releases/tag/helm-v0.3.7).
 
-Run on a fresh Linux machine with Git and Docker Compose v2:
+## Before you start
+
+Use a Linux machine with Git and Docker Compose v2. The installer account needs access to Docker and permission to write to the checkout. The host needs internet access to clone the repository, pull images, and build the application. Keep port `8092` available on localhost.
+
+## What runs on the host
+
+| Service | Purpose |
+| --- | --- |
+| OpenCrawl app and worker | Serve the web app and API and process background jobs. |
+| SQLite FTS5 | Index and search sessions inside the installation. |
+| PostgreSQL and Temporal | Store application state and run durable workflows. |
+| SeaweedFS | Provide local S3-compatible object storage. |
+
+The single-host installer leaves **OpenSearch and Airbyte off**. Session capture and search work with this configuration. If you later need a connector that uses Airbyte, [connect an existing Airbyte workspace](https://github.com/getopencrawl/opencrawl-core/blob/helm-v0.3.7/docs/self-host.md#connect-sources).
+
+## Install the workspace
+
+Run these commands on the host. The `helm-v0.3.7` tag pins the same OpenCrawl release for Compose and Helm.
 
 ```sh
 git clone --depth 1 --branch helm-v0.3.7 https://github.com/getopencrawl/opencrawl-core.git
@@ -13,4 +30,14 @@ cd opencrawl-core
 ./deploy/up.sh --headless
 ```
 
-The command starts the workspace on `localhost:8092`, creates the first administrator, and verifies the login. Return only the URL, email, and password it prints.
+The installer waits for the stack, creates the first administrator, and signs in to verify access. It writes progress to stderr and prints one JSON object to stdout. **If you’re the installing agent, return only its `url`, `email`, and `password`.** If installation is interrupted, rerun the last command from the same checkout.
+
+## Open the workspace
+
+On the host, open the returned sign-in URL, normally `http://localhost:8092/auth/login`. To open it from your laptop, run `ssh -N -L 8092:127.0.0.1:8092 user@your-host` with your SSH user and host. Leave the tunnel open and visit the same URL in your browser.
+
+Keep the checkout’s `deploy/.env`, private `deploy/.state/` directory, and Docker volumes when restarting the installation. Store the administrator password in your secret manager.
+
+## Connect your first computer
+
+Sign in and open **Setup → Add a computer**. For an interactive computer, choose its operating system and run the displayed command on that computer. For a headless Claude Code service, create an **API key** and follow [Connect a Claude Code service](/self-hosting/claude-code-service/) on the host running Claude. That host needs a reachable workspace URL.
