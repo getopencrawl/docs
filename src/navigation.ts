@@ -24,7 +24,7 @@ export const docsTabs: DocsTab[] = [
       {
         label: "Manage your workspace",
         collapsed: true,
-        items: ["workspace", "workspace/custom-s3", "workspace/usage"],
+        items: ["workspace", "workspace/api-keys", "workspace/custom-s3", "workspace/usage"],
       },
       {
         label: "For agents",
