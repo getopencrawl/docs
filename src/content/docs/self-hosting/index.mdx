@@ -46,12 +46,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ## Check that it works
 
-Start a **new** agent session in that environment. Give it a unique phrase such as `orchid lantern 7329`, then finish the session and run:
-
-```sh
-opencrawl collect sync
-opencrawl collect flush
-opencrawl search "orchid lantern 7329" --source sessions --match all --json
-```
-
-A result with that phrase and the new session's URL confirms that capture, indexing, and search work. If indexing is still in progress, retry the search after a few seconds.
+Start a new chat with the connected agent. Approve the OpenCrawl hooks if prompted. Give the chat a distinctive phrase, then open **Sessions** in your workspace and look for that conversation.
