@@ -51,7 +51,7 @@ export const docsTabs: DocsTab[] = [
       },
     ],
   },
-  { label: "Self-hosting", items: ["self-hosting"] },
+  { label: "Self-hosting", items: ["self-hosting", "self-hosting/claude-code-service"] },
   { label: "Changelog", items: ["changelog"] },
 ];
 

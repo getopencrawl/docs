@@ -1,0 +1,27 @@
+---
+title: Connect a Claude Code service
+description: Record headless Claude Code sessions and search them from the service.
+---
+
+In your self-hosted workspace, open **Settings → Machine keys**, name the service, select **Create key**, and copy the key into your secret store.
+
+On the host that runs Claude Code, give the Claude service and its capture daemon the same OS user, home directory, and environment:
+
+| Variable | Value |
+| --- | --- |
+| `OPENCRAWL_API_URL` | Workspace URL reachable from the host |
+| `OPENCRAWL_TOKEN` | Machine key |
+| `OPENCRAWL_SESSIONS_TOKEN` | Same machine key |
+
+Run as that user:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/helm-v0.3.5/cli/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+opencrawl collect install --yes --harness claude-code --daemon --backfill skip
+claude mcp add --scope user opencrawl -- opencrawl mcp --api "$OPENCRAWL_API_URL"
+```
+
+On Linux the installer enables a systemd user service. Supply its environment from the same secret store at startup. If the host uses another supervisor, have it run `opencrawl collect daemon --api "$OPENCRAWL_API_URL"` with automatic restart.
+
+Start a new Claude Code request with a distinctive phrase. When it finishes, search for the phrase in **Sessions**.
