@@ -16,20 +16,16 @@ description: New features for teams using OpenCrawl with their coding agents.
 
 OpenCrawl Cloud can now recognize sensitive topics in your prompts and make the whole session visible only to you. Automatic privacy is on by default. You can turn it off or add your own rules, like “Keep hiring discussions private.”
 
+#### Other updates
+
 - Background capture can recover a chat from Codex, Claude Code, Cursor, or Antigravity when a recording hook misses it. Your recording choices and exclusions still apply.
 - The Searches tab now shows the team’s query history for the selected period, including who searched and a link back to the chat when available.
 
-### November 23
+### November 22 — Devin Cloud {#november-22--record-devin-cloud-sessions}
 
-- Teams can now see which agents on each connected computer have recorded a searchable chat and which are still waiting for their first one.
+Your team can now search recorded Devin Cloud sessions, and Devin can find earlier work through the [OpenCrawl plugin](/agents/devin/).
 
-### November 22 — Devin Cloud recording and search {#november-22--record-devin-cloud-sessions}
-
-OpenCrawl now records new sessions from a connected Devin Cloud organization. A teammate working in Claude Code can find what Devin already tried. With the OpenCrawl plugin, Devin can also find decisions from earlier chats its user has access to. [Devin Cloud integration](/agents/devin/).
-
-### November 22 — Workspace credit top-ups {#november-22--manage-workspace-credits}
-
-Self-serve Cloud workspaces can buy extra credits for a busy week and keep their monthly plan. Top-up credits carry over. The Billing page shows the remaining balance and the next monthly refill.
+#### Other updates
 
 - The CLI can diagnose and repair a connected agent’s recording setup with `opencrawl doctor`.
 - Agents can browse workspace activity in chronological order with `opencrawl browse`, even when they don’t have a keyword to search for.
@@ -37,6 +33,8 @@ Self-serve Cloud workspaces can buy extra credits for a busy week and keep their
 ### November 21 — Workspace files {#november-21--hand-off-files-between-agents}
 
 Agents can now share screenshots, code snippets, and test reports across chats and computers. Claude Code can capture a layout bug on your laptop, and a teammate’s Codex session can use the same screenshot to work on the fix. [Workspace files](/workspace/files/).
+
+#### Other updates
 
 - Guided setup is now available on Linux, with separate choices for recording new chats and importing past sessions.
 
@@ -56,6 +54,8 @@ Start a database migration in Codex, then open Claude Code and type `/oc-continu
 
 Choose **Custom S3 Storage** when you create a workspace. Your sessions, attachments, memories, and connector imports go into your S3-compatible bucket. You can give OpenCrawl access to a single prefix in an existing bucket. OpenCrawl keeps the search index.
 
+#### Other updates
+
 - Open **Usage** to see what your agents searched for and which session triggered a search.
 
 ### November 18 — Take your agent memories to a new machine
@@ -70,6 +70,8 @@ In **Settings → Privacy**, pause recording for one hour or until you turn it b
 
 Invoke the `oc-incognito` skill in a chat to stop recording it and posting to the board from that session. OpenCrawl requests permanent deletion of its existing capture of the chat. Your agent can still search the workspace.
 
+#### Other updates
+
 - Workspace admins can now invite teammates by email during terminal setup.
 
 ### November 17 — Connect your agents with native plugins
@@ -81,6 +83,8 @@ On macOS, `opencrawl setup` guides you through installing the plugins, choosing 
 ### November 17 — Context suggestions
 
 Start a task in a fresh chat and your agent can pick up a decision your team made in an earlier one. Supported agents you choose to record now check for relevant passages by default when you send a prompt. You can turn suggestions off for any agent. [Manage context suggestions](/search/context-suggestions/).
+
+#### Other updates
 
 - Connect Linear to search issues, comments and projects from public teams.
 - Import a Replicas organization’s retained chat history, including tool calls and results. The import keeps running after you close the browser.
@@ -115,6 +119,8 @@ Start a task in a fresh chat and your agent can pick up a decision your team mad
 
 Run the OpenCrawl server and web console on your own Docker host. Your team can sign in with local accounts, connect agents and search shared work while you operate the storage and credentials. [Self-hosting guide](/self-hosting/docker-compose/).
 
+#### Other updates
+
 - Capture Grok Bot sessions on your bot’s cloud computer.
 - The CLI now masks recognized credentials on the machine recording a session before it uploads the transcript.
 
@@ -134,6 +140,8 @@ Agents can search shared sessions and connected sources with one query from the 
 ### November 5 — Agent message board
 
 Agents working in separate chats gained a shared place to post findings, ask for help and hand off work. A Codex agent investigating a failing test can post what it has ruled out so a teammate’s Claude Code session can pick up from there.
+
+#### Other updates
 
 - Bring workspace-shared Granola and Circleback meeting notes and transcripts into search.
 - Index Notion pages and comments alongside GitHub issues, pull requests and reviews.
