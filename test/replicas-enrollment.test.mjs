@@ -21,7 +21,7 @@ test('the documented enrollment sends the code and signed identity only to the s
   const dir = await mkdtemp(join(tmpdir(), 'replicas-docs-'));
   t.after(() => rm(dir, {recursive:true,force:true}));
   await writeFile(join(dir,'replicas'), '#!/bin/sh\n[ "$1 $2 $3 $4" = "identity token --audience $EXPECTED_ORIGIN" ] || exit 1\nprintf "%s" fixture-workspace-token\n', {mode:0o700});
-  const guide = await readFile(new URL('../src/content/docs/agents/replicas-capture.mdx', import.meta.url),'utf8');
+  const guide = await readFile(new URL('../src/content/docs/agents/replicas.mdx', import.meta.url),'utf8');
   const code = 'a'.repeat(64);
   const script = guide.match(/```sh\n([\s\S]*?)\n```/)[1]
     .replace('OPENCRAWL_SERVER_FROM_PROMPT', origin).replace('ONE_TIME_CODE_FROM_PROMPT', code);
