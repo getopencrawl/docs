@@ -4,9 +4,9 @@
 /self-hosting/kubernetes/ /self-hosting/ 301
 /self-hosting/kubernetes/index.md /self-hosting/index.md 301
 /self-hosting/kubernetes/index.mdx /self-hosting/index.mdx 301
-/self-hosting/machine-keys/ /self-hosting/ 301
-/self-hosting/machine-keys/index.md /self-hosting/index.md 301
-/self-hosting/machine-keys/index.mdx /self-hosting/index.mdx 301
+/self-hosting/machine-keys/ /self-hosting/claude-code-service/ 301
+/self-hosting/machine-keys/index.md /self-hosting/claude-code-service/index.md 301
+/self-hosting/machine-keys/index.mdx /self-hosting/claude-code-service/index.mdx 301
 /self-hosting/operator-guide/ /self-hosting/ 301
 /self-hosting/operator-guide/index.md /self-hosting/index.md 301
 /self-hosting/operator-guide/index.mdx /self-hosting/index.mdx 301

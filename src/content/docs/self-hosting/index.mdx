@@ -1,49 +1,14 @@
 ---
 title: Self-host OpenCrawl
-description: Start a workspace on one Linux machine and search your first agent session.
+description: Install OpenCrawl on one Linux host and return the first administrator login.
 ---
 
-**Give this page to your agent:** “Install OpenCrawl on this machine. Create the first admin, record a new test session, and show me its search result. Keep credentials private.”
-
-## Start the workspace
-
-On a fresh Linux host with Git, Docker Engine, and Docker Compose v2, run:
+On a fresh Linux machine with Git and Docker Compose v2, run:
 
 ```sh
-git clone --depth 1 --branch helm-v0.3.4 https://github.com/getopencrawl/opencrawl-core.git
+git clone --depth 1 --branch helm-v0.3.6 https://github.com/getopencrawl/opencrawl-core.git
 cd opencrawl-core
-./deploy/up.sh --sqlite --no-airbyte
-sed -i 's|^OPENCRAWL_URL=$|OPENCRAWL_URL=http://localhost:8092|' deploy/.env
-./deploy/up.sh --sqlite --no-airbyte
+./deploy/up.sh --headless
 ```
 
-The first run creates the configuration. The second starts the app and indexing worker and prints a private link. Open it to create the first administrator. For agents on other machines, configure your HTTPS origin in `deploy/.env` before the second run. For Kubernetes, use the [Helm release kit](https://github.com/getopencrawl/opencrawl-core/releases/tag/helm-v0.3.4).
-
-## Connect one agent
-
-Install the CLI on the agent's machine. On the same host as the checkout:
-
-```sh
-sh cli/install.sh
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-- **Personal agent:** Run `opencrawl setup`, choose **Self-hosted**, enter the workspace URL, and enable recording for your agent.
-- **Unattended agent:** From the checkout on the host, use Node.js to create a private key file and register its verifier. Run these commands once for a new workspace. Use your workspace URL and replace `codex` with `claude-code` if appropriate.
-
-  ```sh
-  key_dir="$HOME/.config/opencrawl-selfhost"
-  mkdir -p -m 700 "$key_dir"
-  verifier=$(node deploy/helm/machine-key.mjs agent http://localhost:8092 "$key_dir/agent.env")
-  printf '\nOPENCRAWL_MACHINE_KEYS=%s\n' "$verifier" >> deploy/.env
-  ./deploy/up.sh --no-airbyte --no-build
-  set -a
-  . "$key_dir/agent.env"
-  set +a
-  opencrawl whoami --json
-  opencrawl collect install --yes --harness codex --backfill skip
-  ```
-
-## Check that it works
-
-Start a new chat with the connected agent. Approve the OpenCrawl hooks if prompted. Give the chat a distinctive phrase, then open **Sessions** in your workspace and look for that conversation.
+The command starts the workspace on `localhost:8092`, creates the first administrator, and verifies the login. Return only the URL, email, and password it prints.
