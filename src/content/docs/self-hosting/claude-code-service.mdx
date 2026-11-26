@@ -16,7 +16,7 @@ On the Claude Code host, set these variables for the service account and its set
 Run as that user:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/helm-v0.3.6/cli/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/getopencrawl/opencrawl-core/helm-v0.3.7/cli/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
 opencrawl collect install --yes --harness claude-code --daemon --backfill skip
 claude mcp add --scope user opencrawl -- opencrawl mcp --api "$OPENCRAWL_API_URL"
@@ -25,3 +25,5 @@ claude mcp add --scope user opencrawl -- opencrawl mcp --api "$OPENCRAWL_API_URL
 The installer saves the capture credential for this account and enables a systemd user service. If it reports that an external supervisor is required, run `opencrawl collect daemon --api "$OPENCRAWL_API_URL"` under the Claude service’s supervisor with automatic restart.
 
 Start a new Claude Code request with a distinctive phrase. When it finishes, search for the phrase in **Sessions**.
+
+To disconnect the service, open **Settings → API keys** and select **Revoke** next to its name.
