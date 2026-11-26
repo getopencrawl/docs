@@ -1,36 +1,44 @@
 ---
-title: Record new Replicas chats
-description: Set up ongoing capture for Claude Code and Codex in a shared Replicas environment.
+title: Set up OpenCrawl agents in Replicas
+description: Give Claude Code and Codex the OpenCrawl CLI, skill, and MCP connection in a shared Replicas environment.
 ---
 
-![A brace groups a prompt and its reply into the matching rows of one session transcript.](/images/docs/pixel/headers/replicas-capture.png)
+![A prompt and its reply in a shared Replicas session.](/images/docs/pixel/headers/replicas-capture.png)
 
-Sign in as an OpenCrawl workspace admin. In Replicas, use an account that can edit your team’s environment.
+## Copy the agent setup prompt
 
-## 1. Open capture setup
+In OpenCrawl **Integrations**, choose **Connect** on the Replicas card. If history is already connected, choose **Set up agents**. Copy the snippet and paste it into a chat in the intended Replicas organization and team environment. It includes your OpenCrawl server and a one-time admin approval code, valid for 30 minutes.
 
-In OpenCrawl, open **Integrations** and click **Set up capture** on the Replicas card. The link appears after you start a history import. You can also open [capture setup directly](https://app.getopencrawl.com/agent-setup#replicas-capture). On a self-hosted instance, use **Setup** or **Agent setup** on your own host.
+The organization API key belongs in the **Connect** dialog. OpenCrawl uses it to [sync Replicas conversations](/integrations/replicas/). Agent setup gives workspaces in the approved Replicas organization access to team tools using their signed workspace identities.
 
-![The Replicas integration card with Set up capture in the lower right.](/images/docs/replicas-capture/integration.jpg)
+## Enroll the organization
 
-## 2. Copy the setup prompt
+Inside Replicas, confirm the organization, environment and destination OpenCrawl server with the admin’s prompt. Use the exact server origin from the prompt for the identity token audience and the enrollment request. If the code has expired, copy a fresh snippet from Integrations.
 
-Click **Install on Replicas**. If the browser shows selected text, copy it. The prompt expires in 30 minutes. Click the same button for a fresh one.
+Run the following once in a private shell in the intended workspace. Substitute the server origin and one-time code from the prompt. Keep the credentials out of logs, files and persistent environment settings.
 
-## 3. Choose your Replicas environment
+```sh
+set -eu
+set +x
+api='OPENCRAWL_SERVER_FROM_PROMPT'
+code='ONE_TIME_CODE_FROM_PROMPT'
+token=$(replicas identity token --audience "$api")
+printf '%s\n' "header = \"Authorization: Bearer $token\"" "data = \"{\\\"code\\\":\\\"$code\\\"}\"" |
+  curl --config - --fail --silent --show-error \
+    --header 'Content-Type: application/json' "$api/api/replicas/connect"
+unset token code
+```
 
-In [Replicas](https://app.replicas.dev/), check the organization name in the upper left and open **New workspace**. Choose your team’s environment just above the message box.
+Continue after the server confirms enrollment in the intended OpenCrawl workspace. Stop on a conflict or an unexpected destination. Future workspaces in the same Replicas organization use their own identities.
 
-![The environment selector is directly above the Replicas message box. In a new organization it reads No environments configured.](/images/docs/replicas-capture/new-workspace.jpg)
+## Install the CLI and skill
 
-If you see **No environments configured**, follow that link and click **New environment**. Keep **Source** set to **Plain**, enter a name, leave **Personal** off, and click **Create**. Return to **New workspace** and select it. [Replicas environment guide](https://docs.replicas.dev/features/environments)
+1. In the intended Replicas environment’s persistent configuration, set `OPENCRAWL_API_URL` to the approved server origin and `OPENCRAWL_AUTH` to `replicas-workspace`. Use Replicas workspace identity for CLI and MCP access. Keep human tokens and the organization API key out of this configuration.
+2. During environment preparation, install the CLI with `npm install -g @getopencrawl/cli`, or reuse a working installation. Verify `opencrawl --version`. Preserve the environment’s existing startup commands and unrelated settings.
+3. Install the skill for each harness you use with `opencrawl skills install --client claude-code` or `opencrawl skills install --client codex`. Read the result for any harness approval the workspace owner needs to complete.
 
-## 4. Send the setup prompt
+## Connect MCP and verify
 
-Paste the prompt into a Claude Code or Codex chat in that environment and send it. Either agent can set up capture for both.
+In the Replicas environment’s MCP settings, add **OpenCrawl** with the approved server origin followed by `/mcp`. Choose `workspace_identity` authentication and use the server origin as the audience. Replicas supplies a fresh signed token for the workspace.
 
-## 5. Check a fresh chat
-
-When setup finishes, start a **new workspace** in the same environment. Send **Reply with “capture check complete”.** Open the chat in OpenCrawl **Sessions** and confirm you can see your message and the reply.
-
-Uploads use the workspace identity. Teammates can use this environment without signing in to OpenCrawl inside Replicas. Recording shares user and assistant messages, including intermediate replies, and tool inputs and outputs with your OpenCrawl team. Human authorship labels are best effort. Incognito is unavailable in Replicas. The organization API key is only needed for [importing retained history](/integrations/replicas/).
+Start a new workspace in that environment. Run `opencrawl whoami --json` and confirm the expected OpenCrawl workspace. In a fresh chat, verify that the OpenCrawl skill is available and that the MCP tool `test_connection` succeeds. Preserve any existing recording configuration. Setting up these agent tools does not require installing a local session recorder.
