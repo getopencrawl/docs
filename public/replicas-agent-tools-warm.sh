@@ -8,7 +8,7 @@
     trap '\''/bin/rm -rf -- "$stage"'\'' EXIT
     cd "$stage"
     /usr/bin/curl -fsSL --retry 3 --proto "=https" --proto-redir "=https" \
-      https://raw.githubusercontent.com/getopencrawl/opencrawl-core/61b8c2ffcb6a874eb6d99d8d20099cc6fc1b0ba9/deploy/replicas/agent-tools.mjs -o agent-tools.mjs
+      https://raw.githubusercontent.com/getopencrawl/opencrawl-core/216f650226e94f7a45d87269e193cf19b3765a99/deploy/replicas/agent-tools.mjs -o agent-tools.mjs
     printf "%s  %s\n" 2f03913ee8ffb50696018cf47004cf116863ebe11c04d474a94c6461333dc394 agent-tools.mjs | /usr/bin/sha256sum --check --status
     /opt/replicas/node/bin/node "$stage/agent-tools.mjs" image
   '
